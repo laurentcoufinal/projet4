@@ -1,0 +1,7 @@
+dist
+node_modules
+playwright-report
+*.min.js
+package-lock.json
+*.png
+*.jpg

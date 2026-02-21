@@ -1,0 +1,15 @@
+.footer {
+  padding: 1rem 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer.glass-text {
+  padding: 1rem 2rem;
+}
