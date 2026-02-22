@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useAuthStore, useIsAuthenticated } from '@/features/auth/auth-store'
@@ -41,6 +41,7 @@ export function PartagerPage() {
   const [tab, setTab] = useState<TabValue>('all')
   const [showAddModal, setShowAddModal] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileFilesModalOpen, setMobileFilesModalOpen] = useState(true)
   const [downloadFileWithPassword, setDownloadFileWithPassword] = useState<FileItem | null>(null)
   const [fileToDelete, setFileToDelete] = useState<FileItem | null>(null)
   const [fileForShareLink, setFileForShareLink] = useState<FileItem | null>(null)
@@ -83,9 +84,18 @@ export function PartagerPage() {
 
   const handleLogout = () => {
     setMobileMenuOpen(false)
+    setMobileFilesModalOpen(false)
     logout()
     navigate('/')
   }
+
+  const closeMobileFilesModal = () => {
+    setMobileFilesModalOpen(false)
+  }
+
+  useEffect(() => {
+    if (isMobileView) setMobileFilesModalOpen(true)
+  }, [isMobileView])
 
   const mainContent = (
     <>
@@ -258,6 +268,39 @@ export function PartagerPage() {
           <main className={styles.main}>
             {mainContent}
           </main>
+
+          {isMobileView && mobileFilesModalOpen && (
+            <>
+              <div className={styles.mobileFilesModalOverlay} aria-hidden />
+              <dialog
+                open
+                className={styles.mobileFilesModal}
+                aria-modal="true"
+                aria-labelledby="mobile-files-modal-title"
+                onCancel={closeMobileFilesModal}
+              >
+                <header className={styles.mobileFilesModalHeader}>
+                  <button
+                    type="button"
+                    className={styles.mobileFilesModalClose}
+                    onClick={closeMobileFilesModal}
+                    aria-label="Fermer"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <h2 id="mobile-files-modal-title" className={styles.mobileFilesModalTitle}>DataShare</h2>
+                </header>
+                <div className={styles.mobileFilesModalNav}>
+                  <span className={styles.mobileFilesModalNavActive}>Mes fichiers</span>
+                </div>
+                <footer className={styles.mobileFilesModalFooter}>
+                  Copyright DataShare® 2025
+                </footer>
+              </dialog>
+            </>
+          )}
         </div>
       </div>
 
