@@ -1,0 +1,10 @@
+[MainForm]
+Top=140
+Left=232
+Width=968
+Height=661
+[GUI]
+Verbose=1
+[SerialPort]
+Name=COM6
+Speed=38400

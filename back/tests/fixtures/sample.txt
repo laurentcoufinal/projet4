@@ -1,0 +1,2 @@
+Contenu du fichier test pour Jean Dupont.
+Ce fichier est envoyé via l'API de partage.

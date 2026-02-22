@@ -1,0 +1,35 @@
+### Test : créer un lien de partage pour un fichier (même utilisateur = Jean Dupont, propriétaire)
+# 1. Login puis 2. Lister les fichiers pour récupérer un id, puis 3. Créer le lien, 4. Télécharger via le lien
+
+### 1. Login Jean Dupont
+# @name login
+POST http://localhost:8000/api/v1/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "jean.dupont@example.com",
+  "password": "MotDePasse123!"
+}
+
+### 2. Liste des fichiers (récupérer l'id d'un fichier pour l'étape suivante)
+# @name listFiles
+GET http://localhost:8000/api/v1/files
+Authorization: Bearer {{login.response.body.token}}
+Accept: application/json
+
+### 3. Créer un lien de partage pour un fichier (même utilisateur = propriétaire)
+# Remplacer 1 par l'id d'un fichier (voir liste ci-dessus). REST Client : {{listFiles.response.body.data.0.id}}
+# @name shareLink
+POST http://localhost:8000/api/v1/files/1/share-link
+Authorization: Bearer {{login.response.body.token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "expires_in_days": 7
+}
+
+### 4. Télécharger le fichier via le lien (sans auth) — remplacer TOKEN par shareLink.response.body.token ou coller le token
+GET http://localhost:8000/api/v1/s/{{shareLink.response.body.token}}
+Accept: application/json

@@ -1,0 +1,36 @@
+### 1. Login Jean Dupont (exécuter en premier, copier le token dans la requête suivante)
+# @name login
+POST http://localhost:8000/api/v1/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "jean.dupont@example.com",
+  "password": "MotDePasse123!"
+}
+
+### 2. Envoi d'un fichier par Jean Dupont
+# Utiliser le token du login (sans guillemets). REST Client : Authorization: Bearer {{login.response.body.token}}
+POST http://localhost:8000/api/v1/files
+Authorization: Bearer 3|BY9Cm01Gy10puC9nnbpYrsupHdReGN8ZoH1QhVZW96cad442
+Accept: application/json
+Content-Type: multipart/form-data; boundary=----FormBoundary
+
+------FormBoundary
+Content-Disposition: form-data; name="file"; filename="document.txt"
+Content-Type: text/plain
+
+Contenu du fichier test pour Jean Dupont.
+------FormBoundary
+Content-Disposition: form-data; name="name"
+
+Rapport 2025
+------FormBoundary
+Content-Disposition: form-data; name="tags[]"
+
+work
+------FormBoundary
+Content-Disposition: form-data; name="tags[]"
+
+archive
+------FormBoundary--

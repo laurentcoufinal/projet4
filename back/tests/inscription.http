@@ -1,0 +1,11 @@
+### Test inscription utilisateur
+
+POST http://localhost:8000/api/v1/register
+Content-Type: application/json
+
+{
+  "name": "Jean Dupont",
+  "email": "jean.dupont@example.com",
+  "password": "MotDePasse123!",
+  "password_confirmation": "MotDePasse123!"
+}
