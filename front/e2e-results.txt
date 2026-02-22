@@ -1,0 +1,12 @@
+# Résultat des tests e2e (Playwright)
+
+Dernière exécution : 2026-02-22
+Résultat : 9 passed (7.4s)
+
+Fichiers de test :
+- e2e/home.spec.ts (2 tests)
+- e2e/auth.spec.ts (4 tests)
+- e2e/files.spec.ts (3 tests)
+
+Pour relancer : npm run test:e2e
+(Prérequis : front sur http://localhost:5173, back Laravel sur http://127.0.0.1:8000)
