@@ -86,6 +86,13 @@
   gap: 0.625rem;
 }
 
+/* Sur largeur mobile / iPhone : masquer la barre desktop (boutons remplacés par le menu 3 points) */
+@media (max-width: 480px) {
+  .partagerHeaderBar {
+    display: none !important;
+  }
+}
+
 .partagerHeaderBarInner {
   width: 100%;
   max-width: 1280px;
@@ -238,4 +245,151 @@
   color: #6b7280;
   padding: 2rem;
   margin: 0;
+}
+
+/* ---------- Layout mobile (design Figma node 9764-569, largeur iPhone) ---------- */
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #ffe4e6; /* rose-100, aligné avec partagerHeaderBar */
+  border-bottom: 1px solid rgba(234, 88, 12, 0.3);
+}
+
+.mobileMenuBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #78350f;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.mobileMenuBtn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mobileMenuIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.mobileProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobileProfileName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #78350f;
+  text-decoration: none;
+}
+
+.mobileProfileName:hover {
+  text-decoration: underline;
+}
+
+.mobileAvatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fdba74, #f87171);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  border: none;
+  padding: 0;
+  cursor: default;
+  font: inherit;
+}
+
+.mobileDrawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(280px, 85vw);
+  background: linear-gradient(to bottom right, #fdba74, #f87171);
+  border-right: 2px solid rgba(113, 63, 18, 0.2);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 101;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-out;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobileDrawer[data-open='true'] {
+  transform: translateX(0);
+}
+
+.mobileDrawerItem {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.4);
+  color: #78350f;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mobileDrawerItem:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mobileDrawerItemActive {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.mobileDrawerFooter {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Media query : écran type iPhone (design Figma 9764-569) */
+@media (max-width: 430px) {
+  .main {
+    padding: 1rem;
+  }
+
+  .mainTitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .tabs {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .fileListCard {
+    min-height: 0;
+  }
 }

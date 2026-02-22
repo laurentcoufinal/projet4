@@ -1,6 +1,9 @@
+import { useState, useRef, useEffect } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { filesApi } from '@/api/files'
 import { filesQueryKey } from '@/hooks/useFiles'
+import { useIsMobileView } from '@/hooks/useMediaQuery'
+import { IconDotsVertical } from '@/components/Icons'
 import type { FileItem } from '@/types'
 import { getExpirationStatus, getExpirationLabel } from './mesFichiersUtils'
 import styles from './MesFileRow.module.css'
@@ -33,6 +36,9 @@ function getIconClass(name: string): string {
 
 export function MesFileRow({ file, onAccess, onDeleteRequest, isDeleting = false, onLinkRequest }: MesFileRowProps) {
   const queryClient = useQueryClient()
+  const isMobileView = useIsMobileView()
+  const [rowMenuOpen, setRowMenuOpen] = useState(false)
+  const rowMenuRef = useRef<HTMLDivElement>(null)
   const status = getExpirationStatus(file)
   const label = getExpirationLabel(file)
   const isExpired = status === 'expired'
@@ -103,6 +109,119 @@ export function MesFileRow({ file, onAccess, onDeleteRequest, isDeleting = false
   const showLinkButton = !isExpired && !file.requires_password
   const iconType = getIconClass(file.name)
 
+  useEffect(() => {
+    if (!rowMenuOpen) return
+    const handleClickOutside = (e: MouseEvent) => {
+      if (rowMenuRef.current && !rowMenuRef.current.contains(e.target as Node)) {
+        setRowMenuOpen(false)
+      }
+    }
+    globalThis.document.addEventListener('click', handleClickOutside)
+    return () => globalThis.document.removeEventListener('click', handleClickOutside)
+  }, [rowMenuOpen])
+
+  function renderRowActions() {
+    if (isExpired) {
+      return (
+        <p className={styles.expiredMessage}>
+          Ce fichier a expiré, il n'est plus stocké chez nous
+        </p>
+      )
+    }
+    if (isMobileView) {
+      return (
+        <div className={styles.rowMenuWrap} ref={rowMenuRef}>
+          <button
+            type="button"
+            className={styles.rowMenuTrigger}
+            onClick={() => setRowMenuOpen((o) => !o)}
+            aria-label="Actions pour ce fichier"
+            aria-expanded={rowMenuOpen}
+            aria-haspopup="true"
+          >
+            <IconDotsVertical className={styles.rowMenuIcon} />
+          </button>
+          {rowMenuOpen && (
+            <ul className={styles.rowMenuDropdown} aria-label="Actions">
+              <li>
+                <button
+                  type="button"
+                  className={styles.rowMenuItem}
+                  onClick={() => { setRowMenuOpen(false); handleAccess(); }}
+                >
+                  Accéder
+                </button>
+              </li>
+              {showLinkButton && (
+                <li>
+                  <button
+                    type="button"
+                    className={styles.rowMenuItem}
+                    onClick={() => { setRowMenuOpen(false); handleCreateLink(); }}
+                    disabled={!onLinkRequest && shareLinkMutation.isPending}
+                  >
+                    {!onLinkRequest && shareLinkMutation.isPending ? '…' : 'Lien'}
+                  </button>
+                </li>
+              )}
+              <li>
+                <button
+                  type="button"
+                  className={styles.rowMenuItem}
+                  onClick={() => { setRowMenuOpen(false); handleDelete(); }}
+                  disabled={deleteDisabled}
+                >
+                  Supprimer
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
+      )
+    }
+    return (
+      <div className={styles.actions}>
+        <button
+          type="button"
+          className={styles.btnDelete}
+          onClick={handleDelete}
+          disabled={deleteDisabled}
+          title="Supprimer"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 3.99992H3.33333M3.33333 3.99992H14M3.33333 3.99992L3.33333 13.3333C3.33333 13.6869 3.47381 14.026 3.72386 14.2761C3.97391 14.5261 4.31304 14.6666 4.66667 14.6666H11.3333C11.687 14.6666 12.0261 14.5261 12.2761 14.2761C12.5262 14.026 12.6667 13.6869 12.6667 13.3333V3.99992M5.33333 3.99992V2.66659C5.33333 2.31296 5.47381 1.97382 5.72386 1.72378C5.97391 1.47373 6.31304 1.33325 6.66667 1.33325H9.33333C9.68696 1.33325 10.0261 1.47373 10.2761 1.72378C10.5262 1.97382 10.6667 2.31296 10.6667 2.66659V3.99992M6.66667 7.33325V11.3333M9.33333 7.33325V11.3333" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Supprimer
+        </button>
+        {showLinkButton && (
+          <button
+            type="button"
+            className={styles.btnLink}
+            onClick={handleCreateLink}
+            disabled={!onLinkRequest && shareLinkMutation.isPending}
+            title={onLinkRequest ? 'Créer un lien de partage' : 'Créer un lien de partage (copié dans le presse-papier)'}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M6.5 8.5L9.5 5.5M9.5 5.5C10.5 4.5 12 4.5 13 5.5C14 6.5 14 8 13 9M9.5 5.5C8.5 6.5 8.5 8 9.5 9C10.5 10 12 10 13 9M6.5 7.5L3.5 10.5C2.5 11.5 2.5 13 3.5 14C4.5 15 6 15 7 14L10 11M6.5 7.5C7.5 6.5 9 6.5 10 7.5C11 8.5 11 10 10 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {!onLinkRequest && shareLinkMutation.isPending ? '…' : 'Lien'}
+          </button>
+        )}
+        <button
+          type="button"
+          className={styles.btnAccess}
+          onClick={handleAccess}
+          title="Accéder au fichier"
+        >
+          Accéder
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.33325 7.99992H12.6666M12.6666 7.99992L7.99992 3.33325M12.6666 7.99992L7.99992 12.6666" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
+    )
+  }
+
   return (
     <li className={styles.row}>
       <span className={styles.icon} aria-hidden>
@@ -138,51 +257,7 @@ export function MesFileRow({ file, onAccess, onDeleteRequest, isDeleting = false
           </svg>
         </span>
       )}
-      {isExpired ? (
-        <p className={styles.expiredMessage}>
-          Ce fichier a expiré, il n'est plus stocké chez nous
-        </p>
-      ) : (
-        <div className={styles.actions}>
-          <button
-            type="button"
-            className={styles.btnDelete}
-            onClick={handleDelete}
-            disabled={deleteDisabled}
-            title="Supprimer"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 3.99992H3.33333M3.33333 3.99992H14M3.33333 3.99992L3.33333 13.3333C3.33333 13.6869 3.47381 14.026 3.72386 14.2761C3.97391 14.5261 4.31304 14.6666 4.66667 14.6666H11.3333C11.687 14.6666 12.0261 14.5261 12.2761 14.2761C12.5262 14.026 12.6667 13.6869 12.6667 13.3333V3.99992M5.33333 3.99992V2.66659C5.33333 2.31296 5.47381 1.97382 5.72386 1.72378C5.97391 1.47373 6.31304 1.33325 6.66667 1.33325H9.33333C9.68696 1.33325 10.0261 1.47373 10.2761 1.72378C10.5262 1.97382 10.6667 2.31296 10.6667 2.66659V3.99992M6.66667 7.33325V11.3333M9.33333 7.33325V11.3333" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Supprimer
-          </button>
-          {showLinkButton && (
-            <button
-              type="button"
-              className={styles.btnLink}
-              onClick={handleCreateLink}
-              disabled={!onLinkRequest && shareLinkMutation.isPending}
-              title={onLinkRequest ? 'Créer un lien de partage' : 'Créer un lien de partage (copié dans le presse-papier)'}
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <path d="M6.5 8.5L9.5 5.5M9.5 5.5C10.5 4.5 12 4.5 13 5.5C14 6.5 14 8 13 9M9.5 5.5C8.5 6.5 8.5 8 9.5 9C10.5 10 12 10 13 9M6.5 7.5L3.5 10.5C2.5 11.5 2.5 13 3.5 14C4.5 15 6 15 7 14L10 11M6.5 7.5C7.5 6.5 9 6.5 10 7.5C11 8.5 11 10 10 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              {!onLinkRequest && shareLinkMutation.isPending ? '…' : 'Lien'}
-            </button>
-          )}
-          <button
-            type="button"
-            className={styles.btnAccess}
-            onClick={handleAccess}
-            title="Accéder au fichier"
-          >
-            Accéder
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3.33325 7.99992H12.6666M12.6666 7.99992L7.99992 3.33325M12.6666 7.99992L7.99992 12.6666" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        </div>
-      )}
+      {renderRowActions()}
     </li>
   )
 }
