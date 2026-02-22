@@ -25,14 +25,16 @@ describe('DropZone', () => {
     vi.clearAllMocks()
   })
 
+  const MAX_SIZE_MB = 1024 // 1 Go, aligné avec le back et AddFilesModal
+
   it('affiche le label et le texte de la zone', () => {
-    render(<DropZone maxSizeMb={100} />, { wrapper: createWrapper() })
+    render(<DropZone maxSizeMb={MAX_SIZE_MB} />, { wrapper: createWrapper() })
     expect(screen.getByText('Glissez-déposez vos fichiers ici')).toBeInTheDocument()
     expect(screen.getByText('ou cliquez pour sélectionner des fichiers')).toBeInTheDocument()
   })
 
   it('contient un input file multiple', () => {
-    render(<DropZone maxSizeMb={100} />, { wrapper: createWrapper() })
+    render(<DropZone maxSizeMb={MAX_SIZE_MB} />, { wrapper: createWrapper() })
     const fileInput = document.getElementById('file-upload') as HTMLInputElement
     expect(fileInput).toBeInTheDocument()
     expect(fileInput.type).toBe('file')
@@ -47,7 +49,7 @@ describe('DropZone', () => {
       headers: {},
       config: {} as import('axios').InternalAxiosRequestConfig,
     })
-    render(<DropZone maxSizeMb={100} />, { wrapper: createWrapper() })
+    render(<DropZone maxSizeMb={MAX_SIZE_MB} />, { wrapper: createWrapper() })
     const zone = screen.getByTestId('drop-zone')
     const file = new File(['content'], 'test.pdf', { type: 'application/pdf' })
     triggerDrop(zone, [file])
@@ -65,7 +67,7 @@ describe('DropZone', () => {
     vi.mocked(filesApi.filesApi.upload).mockReturnValueOnce(
       uploadPromise as ReturnType<typeof filesApi.filesApi.upload>
     )
-    render(<DropZone maxSizeMb={100} />, { wrapper: createWrapper() })
+    render(<DropZone maxSizeMb={MAX_SIZE_MB} />, { wrapper: createWrapper() })
     const zone = screen.getByTestId('drop-zone')
     triggerDrop(zone, [new File(['x'], 'a.pdf', { type: 'application/pdf' })])
     await waitFor(() => {
@@ -82,7 +84,7 @@ describe('DropZone', () => {
 
   it('affiche "Erreur lors de l’envoi." en cas d’échec de l’API', async () => {
     vi.mocked(filesApi.filesApi.upload).mockRejectedValueOnce(new Error('Network error'))
-    render(<DropZone maxSizeMb={100} />, { wrapper: createWrapper() })
+    render(<DropZone maxSizeMb={MAX_SIZE_MB} />, { wrapper: createWrapper() })
     const zone = screen.getByTestId('drop-zone')
     triggerDrop(zone, [new File(['x'], 'a.pdf', { type: 'application/pdf' })])
     await waitFor(() => {

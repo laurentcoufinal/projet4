@@ -5,7 +5,7 @@ import { filesQueryKey } from '@/hooks/useFiles'
 import { getApiErrorMessage } from '@/features/auth/api-errors'
 import styles from './AddFilesModal.module.css'
 
-const MAX_FILE_SIZE_MB = 100
+const MAX_FILE_SIZE_MB = 1024 // 1 Go
 const MB = 1024 * 1024
 
 const EXPIRATION_OPTIONS = [
@@ -86,7 +86,7 @@ export function AddFilesModal({ onClose, id }: AddFilesModalProps) {
       return
     }
     if (file.size > MAX_FILE_SIZE_MB * MB) {
-      setFileError(`Fichier trop volumineux (max ${MAX_FILE_SIZE_MB} Mo).`)
+      setFileError('Fichier trop volumineux (max 1 Go).')
       e.target.value = ''
       return
     }

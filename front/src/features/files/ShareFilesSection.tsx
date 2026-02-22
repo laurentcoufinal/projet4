@@ -4,7 +4,7 @@ import { DropZone } from '@/components/DropZone'
 import { IconUpload } from '@/components/Icons'
 import styles from './ShareFilesSection.module.css'
 
-const MAX_FILE_SIZE_MB = 100
+const MAX_FILE_SIZE_MB = 1024 // 1 Go
 
 export function ShareFilesSection() {
   const isAuthenticated = useIsAuthenticated()
@@ -33,7 +33,7 @@ export function ShareFilesSection() {
         </div>
       )}
       <p className={`${styles.hint} glass-text`}>
-        Formats supportés : tous types de fichiers • Taille max : {MAX_FILE_SIZE_MB} MB par fichier
+        Formats supportés : tous types de fichiers • Taille max : 1 Go par fichier
       </p>
     </section>
   )
