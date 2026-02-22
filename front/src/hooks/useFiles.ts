@@ -10,5 +10,7 @@ export function useFiles() {
       const { data } = await filesApi.list()
       return data.data ?? []
     },
+    refetchOnWindowFocus: true,
+    refetchOnMount: true,
   })
 }

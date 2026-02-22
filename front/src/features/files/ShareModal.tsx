@@ -25,8 +25,8 @@ export function ShareModal({ file, onClose }: ShareModalProps) {
 
   const shareMutation = useMutation({
     mutationFn: () => filesApi.shareLink(file.id, 7),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: filesQueryKey })
+    onSuccess: async () => {
+      await queryClient.refetchQueries({ queryKey: filesQueryKey })
     },
   })
 

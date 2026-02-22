@@ -1,6 +1,7 @@
 import { useRef, useState, useCallback } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { filesApi } from '@/api/files'
+import { filesQueryKey } from '@/hooks/useFiles'
 import { getApiErrorMessage } from '@/features/auth/api-errors'
 import styles from './AddFilesModal.module.css'
 
@@ -51,8 +52,8 @@ export function AddFilesModal({ onClose, id }: AddFilesModalProps) {
       const { data } = await filesApi.upload(formData)
       return data
     },
-    onSuccess: (data, variables) => {
-      queryClient.invalidateQueries({ queryKey: ['files'] })
+    onSuccess: async (data, variables) => {
+      await queryClient.refetchQueries({ queryKey: filesQueryKey })
       const days = variables.expirationDays
       if (days > 0 && data?.id) {
         shareLinkMutation.mutate({ fileId: data.id, days })
@@ -65,12 +66,12 @@ export function AddFilesModal({ onClose, id }: AddFilesModalProps) {
   const shareLinkMutation = useMutation({
     mutationFn: ({ fileId, days }: { fileId: number; days: number }) =>
       filesApi.shareLink(fileId, days),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['files'] })
+    onSuccess: async () => {
+      await queryClient.refetchQueries({ queryKey: filesQueryKey })
       onClose()
     },
-    onError: () => {
-      queryClient.invalidateQueries({ queryKey: ['files'] })
+    onError: async () => {
+      await queryClient.refetchQueries({ queryKey: filesQueryKey })
       onClose()
     },
   })
@@ -132,6 +133,16 @@ export function AddFilesModal({ onClose, id }: AddFilesModalProps) {
         <h2 id="add-file-title" className={styles.title}>
           Ajouter un fichier
         </h2>
+        <button
+          type="button"
+          className={styles.close}
+          onClick={onClose}
+          aria-label="Fermer"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       </div>
 
       <div className={styles.fileRow}>

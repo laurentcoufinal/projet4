@@ -1,12 +1,9 @@
-import { useNavigate } from 'react-router-dom'
 import styles from './HeroSection.module.css'
 
 /**
  * Hero page d'accueil – Figma 9764-346 : titre + zone circulaire upload.
  */
 export function HeroSection() {
-  const navigate = useNavigate()
-
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <h1 id="hero-title" className={styles.title}>
@@ -15,7 +12,6 @@ export function HeroSection() {
       <button
         type="button"
         className={styles.pill}
-        onClick={() => navigate('/partager')}
         aria-label="Partager un fichier"
       >
         <div className={styles.pillInner}>

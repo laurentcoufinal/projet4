@@ -14,6 +14,8 @@ export interface FileItem {
   size?: number
   mime_type?: string
   created_at?: string
+  /** Expiration du fichier (durée de conservation), fournie par le serveur. Distincte de share_links[].expires_at (expiration des liens). ISO string. */
+  expires_at?: string
   role?: 'owner' | 'viewer' | string
   shared_with?: number[]
   tags?: string[]

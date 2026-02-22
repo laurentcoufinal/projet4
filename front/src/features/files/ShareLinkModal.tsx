@@ -27,10 +27,10 @@ export function ShareLinkModal({
       const res = await filesApi.shareLink(file.id, days)
       return res.data
     },
-    onSuccess: (body) => {
-      queryClient.invalidateQueries({ queryKey: filesQueryKey })
+    onSuccess: async (body) => {
       const url = body?.url ?? ''
       setShareUrl(url)
+      await queryClient.refetchQueries({ queryKey: filesQueryKey })
     },
   })
 

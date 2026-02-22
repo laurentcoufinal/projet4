@@ -327,7 +327,10 @@ export function PartagerPage() {
       {fileForShareLink && (
         <ShareLinkModal
           file={fileForShareLink}
-          onClose={() => setFileForShareLink(null)}
+          onClose={async () => {
+            setFileForShareLink(null)
+            await queryClient.refetchQueries({ queryKey: filesQueryKey })
+          }}
         />
       )}
     </div>

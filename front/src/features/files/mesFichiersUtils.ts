@@ -2,7 +2,17 @@ import type { FileItem } from '@/types'
 
 export type FileExpirationStatus = 'active' | 'expired' | 'none'
 
-/** Dernière date d'expiration parmi les share_links (ISO string ou null). */
+/**
+ * Date d’expiration du fichier (durée de conservation), fournie par le serveur.
+ * Distincte de l’expiration des liens (share_links[].expires_at).
+ * Utilisée uniquement pour le statut affiché dans la liste (mis à jour à l’affichage via les données serveur).
+ */
+export function getFileExpiresAt(file: FileItem): string | null {
+  const at = file.expires_at
+  return at ?? null
+}
+
+/** Dernière date d’expiration parmi les share_links (expiration du lien). Utilisée pour le modal téléchargement. */
 export function getLatestExpiresAt(file: FileItem): string | null {
   const links = file.share_links ?? []
   if (links.length === 0) return null
@@ -11,8 +21,9 @@ export function getLatestExpiresAt(file: FileItem): string | null {
   return [...dates].sort((a, b) => a.localeCompare(b)).reverse()[0] ?? null
 }
 
+/** Statut d'expiration du fichier (durée du fichier), pas du lien. */
 export function getExpirationStatus(file: FileItem): FileExpirationStatus {
-  const at = getLatestExpiresAt(file)
+  const at = getFileExpiresAt(file)
   if (!at) return 'none'
   const t = new Date(at).getTime()
   const now = Date.now()
@@ -20,9 +31,9 @@ export function getExpirationStatus(file: FileItem): FileExpirationStatus {
   return 'active'
 }
 
-/** Texte affiché pour le statut d'expiration. */
+/** Texte affiché pour le statut : durée du fichier (expiration du fichier), pas du lien. */
 export function getExpirationLabel(file: FileItem): string {
-  const at = getLatestExpiresAt(file)
+  const at = getFileExpiresAt(file)
   if (!at) return '—'
   const d = new Date(at)
   const now = new Date()

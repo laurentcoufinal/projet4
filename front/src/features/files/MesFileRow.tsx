@@ -39,6 +39,7 @@ export function MesFileRow({ file, onAccess, onDeleteRequest, isDeleting = false
   const isMobileView = useIsMobileView()
   const [rowMenuOpen, setRowMenuOpen] = useState(false)
   const rowMenuRef = useRef<HTMLDivElement>(null)
+  // Statut et libellé dérivés uniquement des données serveur (file), pas d’état local — mis à jour à l’affichage quand la liste est refetchée
   const status = getExpirationStatus(file)
   const label = getExpirationLabel(file)
   const isExpired = status === 'expired'
@@ -55,10 +56,10 @@ export function MesFileRow({ file, onAccess, onDeleteRequest, isDeleting = false
       const res = await filesApi.shareLink(file.id, days)
       return res.data
     },
-    onSuccess: (body) => {
-      queryClient.invalidateQueries({ queryKey: filesQueryKey })
+    onSuccess: async (body) => {
       const shareUrl = body?.url ?? ''
       if (shareUrl) navigator.clipboard.writeText(shareUrl).catch(() => {})
+      await queryClient.refetchQueries({ queryKey: filesQueryKey })
     },
   })
 

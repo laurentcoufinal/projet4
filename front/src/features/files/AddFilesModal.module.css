@@ -14,6 +14,9 @@
   position: relative;
   width: 100%;
   max-width: 1280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
@@ -37,6 +40,23 @@
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
+  position: relative;
+}
+
+.close {
+  margin-left: auto;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 0.5rem;
+}
+
+.close:hover {
+  color: #1b1b18;
+  background: rgba(0, 0, 0, 0.06);
 }
 
 /* flex-1 text-center text-black text-3xl font-bold leading-10 line-clamp-1 */
