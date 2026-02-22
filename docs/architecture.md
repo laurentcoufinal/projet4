@@ -53,7 +53,7 @@ Cette section décrit l'usage de DataShare par un **utilisateur final** : les pa
 
 ## 3. Architecture logicielle
 
-- **Schéma de haut niveau** : [Vue système](diagrams/architecture-haut-niveau.drawio). [Composants et couches](diagrams/composants-couches.drawio).
+- **Schéma de haut niveau** : [Vue système](diagrams/architecture-haut-niveau.drawio). [Composants et couches](diagrams/composants-couches.drawio). [Architecture et flux](diagrams/architecture-flux.drawio) (composants + flux principaux).
 - **Couches / modules** :
   - **Présentation (front)** : [front/src/](/front/src) — pages, composants, features (auth, files), hooks (useFiles), client API (Axios + intercepteurs).
   - **API (back)** : [back/app/Http/Controllers/Api/V1/](/back/app/Http/Controllers/Api/V1) — AuthController, FileController ; routes sous `/api/v1`.
