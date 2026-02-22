@@ -1,4 +1,4 @@
-# Architecture — FileShare (projet4)
+# Architecture — DataShare (projet4)
 
 ## 1. Vue d'ensemble
 
@@ -6,6 +6,45 @@
 - **Type** : Application web (frontend SPA + API REST).
 - **Stack principale** : Frontend — React 18, Vite, TypeScript, React Query, Zustand, Axios. Backend — Laravel 12, PHP 8.2, Laravel Sanctum. Données — SQLite (défaut), stockage fichiers (disque local via `StorageDaoInterface`).
 - **contrainte de conception**: stockage deriere une DAO pour facilte la montée en charge si besoin.
+
+---
+
+## Utilisation de l'application — parcours utilisateur
+
+Cette section décrit l'usage de DataShare par un **utilisateur final** : les pages, la navigation et les actions possibles à chaque étape.
+
+### Les pages et leur rôle
+
+| Page | URL | Rôle |
+|------|-----|------|
+| **Accueil** | `/` | Présentation de DataShare : titre « Tu veux partager un fichier ? », visuel, lien « Se connecter ». Point d'entrée pour un visiteur. |
+| **Connexion** | `/connection` | Formulaire de connexion (email, mot de passe). Lien « Créer un compte ». Après connexion → redirection vers « Mes fichiers » (`/partager`). |
+| **Créer un compte** | `/inscription` | Formulaire d'inscription (email, mot de passe, vérification). Lien « J'ai déjà un compte ». Après inscription → redirection vers l'accueil. |
+| **Mes fichiers** | `/partager` | Liste des fichiers (si connecté). Onglets : Tous, Actifs, Expiré. Actions : ajouter des fichiers ; par fichier : accéder (télécharger), partager (créer un lien), supprimer. Sans connexion : message invitant à se connecter. |
+| **Fichier partagé** | `/shared/:token` | Page ouverte via un **lien de partage**. Bouton « Télécharger le fichier ». Si lien expiré/invalide : message d'erreur et « Retour à l'accueil ». Aucune connexion requise. |
+
+### Cheminement type (utilisateur qui dépose et partage)
+
+1. **Arrivée** : Ouverture de l'application (accueil `/`).
+2. **Connexion** : « Se connecter » → page Connexion → email + mot de passe → redirection vers **Mes fichiers** (`/partager`). *(Pas de compte : « Créer un compte » → Inscription → puis accès à Mes fichiers.)*
+3. **Mes fichiers** : Liste (vide ou non). **Ajouter des fichiers** : choix du fichier (max 1 Go), optionnel mot de passe et durée de validité du lien → téléversement. Par fichier : **Accéder** (télécharger, mot de passe si requis), **Partager** (créer lien, copier l'URL), **Supprimer** (avec confirmation). Filtres : Tous / Actifs / Expiré.
+4. **Partager** : Depuis « Partager », copier l'URL du lien et l'envoyer au destinataire.
+5. **Déconnexion** : « Déconnexion » → retour à l'accueil.
+
+### Cheminement du destinataire d'un lien (sans compte)
+
+1. Réception d'un lien `.../shared/xxxxx`.
+2. Ouverture dans le navigateur → page **Fichier partagé**.
+3. « Télécharger le fichier » → téléchargement (éventuellement après mot de passe). Aucune connexion ni inscription.
+
+### Résumé des fonctions par page
+
+- **Accueil** : présentation, accès à Connexion.
+- **Connexion / Inscription** : créer une session ou un compte.
+- **Mes fichiers** : liste, ajout, téléchargement, création de lien de partage, suppression, déconnexion.
+- **Fichier partagé** : téléchargement via le lien reçu (sans connexion).
+
+---
 
 ## 2. Contexte et périmètre
 
@@ -69,10 +108,17 @@ Le projet s’appuie sur un domaine « partage de fichiers » sans formaliser de
   - **Backend** ([back/.env.example](/back/.env.example)) : APP_NAME, APP_ENV, APP_KEY, APP_DEBUG, APP_URL, DB_*, SESSION_DRIVER, FILESYSTEM_DISK, CACHE_STORE, LOG_*, etc. (pas de valeurs sensibles dans le doc).
   - **Frontend** ([front/.env.example](/front/.env.example)) : VITE_API_BASE_URL (ex. `http://localhost:8000/api`). Optionnel E2E : E2E_TEST_EMAIL, E2E_TEST_PASSWORD.
 
+## 7b. Tests
+
+- **Tests unitaires (front)** : Vitest — `npm run test:run` dans `front/` (composants, hooks, modals, limite 1 Go).
+- **Tests unitaires / feature (back)** : PHPUnit — `php artisan test` dans `back/` (auth, fichiers, upload, partage, limite 1 Go).
+- **Tests e2e** : Playwright — `npm run test:e2e` dans `front/` ; le backend doit être démarré. Résultats : `front/e2e-results.txt`, `front/e2e/results/dernier-run.md`.
+- **Tests de charge** : k6 (Grafana) — scripts dans `k6/` (smoke, load, stress). Voir `k6/README.md`. Lancer avec Docker : `docker run --rm -v "$(pwd)":/app -w /app --network host grafana/k6 run k6/smoke.js`.
+
 ## 8. Décisions et contraintes
 
 - **Choix** : API REST versionnée (`/api/v1`) ; authentification par token (Sanctum) pour le front SPA ; stockage binaire découplé via interface (`StorageDaoInterface`) pour permettre un changement de support (local, S3) sans toucher aux contrôleurs.
-- **Contraintes** : Taille fichier max 100 Mo (FileController::MAX_FILE_SIZE_MB) ; types MIME dangereux bloqués côté front (DropZone) ; partage en lecture seule (permission `read`).
+- **Contraintes** : Taille fichier max **1 Go** (FileController::MAX_FILE_SIZE_MB = 1024) ; types MIME dangereux bloqués côté front (DropZone) ; partage en lecture seule (permission `read`).
 - **Références** : Cahier des charges mentionné dans [back/README.md](/back/README.md) (cahier_des_charges_application_partage_fichiers.md).
 
 ---

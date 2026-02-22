@@ -1,6 +1,6 @@
-# FileShare (front)
+# DataShare (front)
 
-Application React de partage de fichiers, connectée à une API Laravel. Voir `architecture.md` pour la description des fonctionnalités et des fichiers.
+Application React de partage de fichiers (design Figma DataShare), connectée à une API Laravel. Taille max par fichier : **1 Go**. Voir `architecture.md` pour la description des fonctionnalités et des fichiers.
 
 ## Prérequis
 
@@ -11,7 +11,7 @@ Application React de partage de fichiers, connectée à une API Laravel. Voir `a
 npm install
 ```
 
-Copier `.env.example` vers `.env` et renseigner `VITE_API_BASE_URL` (ex. `http://localhost:8000/api`).
+Copier `.env.example` vers `.env` et renseigner `VITE_API_BASE_URL` (ex. `http://localhost:8000/api`). Le backend doit être démarré pour l’API et pour les tests e2e.
 
 ---
 
@@ -64,6 +64,12 @@ Les tests de connexion utilisent par défaut le compte défini dans `.env.exampl
 ```bash
 E2E_TEST_EMAIL=autre@example.com E2E_TEST_PASSWORD=secret npm run test:e2e
 ```
+
+---
+
+## Résultats des tests e2e
+
+Les derniers résultats peuvent être enregistrés dans `e2e-results.txt` et `e2e/results/dernier-run.md` (voir section Tests e2e).
 
 ---
 

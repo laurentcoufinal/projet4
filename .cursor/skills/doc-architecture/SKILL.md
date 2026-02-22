@@ -7,6 +7,51 @@ description: Génère une documentation d'architecture claire et structurée pou
 
 Cette skill guide la génération d'une documentation d'architecture de qualité pour un projet informatique.
 
+---
+
+## Notice pour les utilisateurs non informaticiens
+
+Cette section s’adresse à toute personne qui n’est pas à l’aise avec le jargon technique (développement, code, API, etc.) et qui souhaite utiliser cette fonctionnalité.
+
+### À quoi ça sert ?
+
+La « documentation d’architecture » décrit **comment le projet est organisé** : à quoi il sert, quelles sont les grandes parties (par exemple l’interface utilisateur, le serveur, les données), comment les informations circulent, et quelles décisions ont été prises. C’est un **document de référence** qui aide à :
+
+- Comprendre le projet sans avoir à lire le code.
+- Préparer une présentation ou un rapport.
+- Accueillir une nouvelle personne sur le projet.
+- Avoir une trace écrite de l’organisation du système.
+
+### Quand l’utiliser ?
+
+Vous pouvez faire appel à cette documentation lorsque vous voulez par exemple :
+
+- **Avoir une vue d’ensemble** : « Peux-tu me faire une doc d’architecture du projet ? »
+- **Mettre à jour la doc existante** : « Mets à jour la documentation d’architecture. »
+- **Obtenir un résumé** : « Fais-moi un résumé de l’architecture pour des non-techniques. »
+- **Comprendre un flux** : « Documente comment fonctionne la connexion utilisateur (ou le paiement, etc.). »
+
+### Ce que vous obtiendrez
+
+- Un **document structuré** (souvent un fichier `.md`) avec des titres et des sections claires.
+- Une **vue d’ensemble** en début de document (objectif du projet, type d’application).
+- Une **description des grandes parties** du système et de leur rôle.
+- Des **explications des flux** (par exemple : « L’utilisateur se connecte → le serveur vérifie → la liste des fichiers s’affiche »).
+- Parfois des **schémas** (diagrammes) pour visualiser l’ensemble.
+- Un **petit glossaire** en fin de document pour les termes techniques utilisés.
+
+### Comment demander une version plus simple ?
+
+Si le document généré vous semble trop technique, vous pouvez demander par exemple :
+
+- « Réécris la section X en langage plus simple, sans jargon. »
+- « Fais-moi une version résumée de la doc d’architecture pour une présentation métier. »
+- « Explique-moi la partie "Flux" comme si tu parlais à quelqu’un qui ne code pas. »
+
+L’assistant pourra adapter le texte en gardant le fond et en simplifiant les termes.
+
+---
+
 ## Principes
 
 - **Précision** : s'appuyer sur le code et la structure réels du projet, pas sur des suppositions.

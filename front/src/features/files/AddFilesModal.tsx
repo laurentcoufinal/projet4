@@ -7,6 +7,7 @@ import styles from './AddFilesModal.module.css'
 
 const MAX_FILE_SIZE_MB = 1024 // 1 Go
 const MB = 1024 * 1024
+const MIN_FILE_PASSWORD_LENGTH = 6
 
 const EXPIRATION_OPTIONS = [
   { value: 1, label: 'Une journée' },
@@ -77,6 +78,7 @@ export function AddFilesModal({ onClose, id }: AddFilesModalProps) {
   })
 
   const [fileError, setFileError] = useState<string | null>(null)
+  const [passwordError, setPasswordError] = useState<string | null>(null)
 
   const onFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setFileError(null)
@@ -105,6 +107,12 @@ export function AddFilesModal({ onClose, id }: AddFilesModalProps) {
 
   const onTéléverser = useCallback(() => {
     if (!selectedFile) return
+    setPasswordError(null)
+    const pwd = password.trim()
+    if (pwd.length > 0 && pwd.length < MIN_FILE_PASSWORD_LENGTH) {
+      setPasswordError(`Le mot de passe doit contenir au moins ${MIN_FILE_PASSWORD_LENGTH} caractères.`)
+      return
+    }
     uploadMutation.mutate({
       file: selectedFile,
       passwordValue: password,
@@ -193,10 +201,14 @@ export function AddFilesModal({ onClose, id }: AddFilesModalProps) {
             type="password"
             className={styles.input}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Optionnel"
+            onChange={(e) => {
+              setPassword(e.target.value)
+              setPasswordError(null)
+            }}
+            placeholder="Optionnel (min. 6 caractères si renseigné)"
             autoComplete="new-password"
           />
+          {passwordError && <p className={styles.error} role="alert">{passwordError}</p>}
         </div>
         <div className={styles.field}>
           <label htmlFor="add-file-expiration" className={styles.fieldLabel}>
