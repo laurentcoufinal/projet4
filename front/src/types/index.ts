@@ -18,6 +18,8 @@ export interface FileItem {
   shared_with?: number[]
   tags?: string[]
   share_links?: ShareLinkItem[]
+  /** Présent quand le fichier est protégé par mot de passe (téléchargement via POST + password). */
+  requires_password?: boolean
 }
 
 export interface LoginCredentials {

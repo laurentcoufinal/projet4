@@ -1,0 +1,7 @@
+{"sessionId":"e01225","hypothesisId":"H1","location":"PartagerPage.tsx:btnAdd.onClick","message":"AddFiles button clicked","data":{"showAddModalBefore":false},"timestamp":1771751257830}
+{"sessionId":"e01225","hypothesisId":"H2","location":"AddFilesModal.tsx:render","message":"AddFilesModal render","data":{"selectedFileName":null,"view":"dropZone"},"timestamp":1771751257831}
+{"sessionId":"e01225","hypothesisId":"H2","location":"AddFilesModal.tsx:render","message":"AddFilesModal render","data":{"selectedFileName":null,"view":"dropZone"},"timestamp":1771751257832}
+{"sessionId":"e01225","hypothesisId":"H2","location":"AddFilesModal.tsx:render","message":"AddFilesModal render","data":{"selectedFileName":null,"view":"dropZone"},"timestamp":1771751295802}
+{"sessionId":"e01225","hypothesisId":"H2","location":"AddFilesModal.tsx:render","message":"AddFilesModal render","data":{"selectedFileName":null,"view":"dropZone"},"timestamp":1771751295802}
+{"sessionId":"e01225","hypothesisId":"H2","location":"AddFilesModal.tsx:render","message":"AddFilesModal render","data":{"selectedFileName":null,"view":"dropZone"},"timestamp":1771751295805}
+{"sessionId":"e01225","hypothesisId":"H2","location":"AddFilesModal.tsx:render","message":"AddFilesModal render","data":{"selectedFileName":null,"view":"dropZone"},"timestamp":1771751295805}

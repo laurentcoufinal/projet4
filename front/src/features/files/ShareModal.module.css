@@ -1,7 +1,8 @@
+/* DataShare – Modal partage (Figma node 9764-506) */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--ds-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,119 +10,121 @@
 }
 
 .modal {
-  background: var(--color-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
+  background: var(--ds-bg);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-lg) var(--ds-space-xl);
   min-width: 400px;
   max-width: 90vw;
 }
 
 .title {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--ds-space-md);
   font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ds-text);
 }
 
 .existingLinks {
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  margin-bottom: var(--ds-space-md);
+  padding: var(--ds-space-md);
+  background: var(--ds-input-bg);
+  border-radius: var(--ds-radius-md);
 }
 
 .existingTitle {
-  margin: 0 0 0.5rem;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  margin: 0 0 var(--ds-space-sm);
+  font-size: var(--ds-body-size);
+  color: var(--ds-text-muted);
 }
 
 .existingList {
   margin: 0;
   padding-left: 1.25rem;
   font-size: 0.85rem;
-  color: var(--color-text);
+  color: var(--ds-text);
 }
 
 .existingList li {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--ds-space-xs);
 }
 
 .status {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  margin: 0 0 var(--ds-space-md);
+  font-size: var(--ds-body-size);
+  color: var(--ds-text-muted);
 }
 
 .error {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: #f87171;
+  margin: 0 0 var(--ds-space-md);
+  font-size: var(--ds-body-size);
+  color: var(--ds-error);
 }
 
 .linkBlock {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--ds-space-sm);
+  margin-bottom: var(--ds-space-md);
 }
 
 .linkRow {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--ds-space-sm);
 }
 
 .duration {
   margin: 0;
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--ds-text-muted);
 }
 
 .input {
   flex: 1;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text);
-  font-size: 0.9rem;
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-input-bg);
+  color: var(--ds-text);
+  font-size: var(--ds-body-size);
 }
 
 .copyBtn {
-  padding: 0.5rem 1rem;
-  background: var(--color-primary);
-  color: white;
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  background: var(--ds-primary);
+  color: var(--ds-on-primary);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--ds-radius-sm);
   font-weight: 500;
   white-space: nowrap;
 }
 
 .copyBtn:hover {
-  background: var(--color-primary-light);
+  background: var(--ds-primary-hover);
 }
 
 .primary {
-  padding: 0.5rem 1rem;
-  background: var(--color-primary);
-  color: white;
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  background: var(--ds-primary);
+  color: var(--ds-on-primary);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--ds-radius-sm);
   font-weight: 500;
-  margin-right: 0.5rem;
+  margin-right: var(--ds-space-sm);
 }
 
 .primary:hover {
-  background: var(--color-primary-light);
+  background: var(--ds-primary-hover);
 }
 
 .secondary {
-  padding: 0.5rem 1rem;
+  padding: var(--ds-space-sm) var(--ds-space-md);
   background: transparent;
-  color: var(--color-text-muted);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
+  color: var(--ds-text-muted);
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-sm);
 }
 
 .secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--ds-input-bg);
 }

@@ -9,6 +9,10 @@ export const filesApi = {
 
   download: (id: number) => apiClient.get(`/files/${id}/download`, { responseType: 'blob' }),
 
+  /** Téléchargement avec mot de passe (fichier protégé). */
+  downloadWithPassword: (id: number, password: string) =>
+    apiClient.post(`/files/${id}/download`, { password }, { responseType: 'blob' }),
+
   delete: (id: number) => apiClient.delete(`/files/${id}`),
 
   /** Crée un lien de partage (réponse: { url, token, expires_at }). */

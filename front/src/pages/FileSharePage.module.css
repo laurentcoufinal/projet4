@@ -1,13 +1,28 @@
+/* DataShare – Page principale (Figma node 9764-12) */
 .page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Page d'accueil hero (9764-346) : fond dégradé orange → red (to bottom-right) */
+.pageHero {
+  background: var(--hero-bg);
 }
 
 .main {
   flex: 1;
-  padding: 2rem;
-  max-width: 900px;
+  padding: var(--ds-space-xl);
+  max-width: var(--ds-content-max-width, 960px);
   margin: 0 auto;
+  width: 100%;
+}
+
+.mainHero {
+  flex: 1;
+  padding: 0;
+  max-width: none;
+  margin: 0;
   width: 100%;
 }

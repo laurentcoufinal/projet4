@@ -1,4 +1,4 @@
-/** Icône logo FileShare : partage (un nœud relié à deux autres) */
+/** Icône logo DataShare : partage (un nœud relié à deux autres) */
 export function IconShareLogo({ className }: { className?: string }) {
   return (
     <svg
@@ -72,6 +72,37 @@ export function IconList({ className }: { className?: string }) {
       <path d="M5 7 h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       <path d="M5 12 h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       <path d="M5 17 h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+/** Icône nuage + flèche vers le haut (upload) – design Figma hero 9764-346 */
+export function IconCloudUpload({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      {/* Nuage */}
+      <path
+        d="M6 16.7a4 4 0 0 1 2-7.2 5 5 0 0 1 9-1 3.5 3.5 0 0 1 2.5 6 3 3 0 0 1-1.5 5.7"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      {/* Flèche vers le haut (centrée sous le nuage) */}
+      <path
+        d="M12 17v-6M12 11l-3 3M12 11l3 3"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   )
 }

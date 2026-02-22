@@ -1,16 +1,98 @@
+/*
+  DataShare – Design system (tokens Figma)
+  Remplacer les valeurs :root par celles du Figma. Template de saisie : docs/figma-tokens.md
+  Liens Figma (mode Dev) :
+  - 9764-12  : https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-12&m=dev
+  - 9764-148 : https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-148&m=dev
+  - 9764-274 : https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-274&m=dev
+  - 9764-357 : https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-357&m=dev
+  - 9764-506 : https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-506&m=dev
+  - 9764-346 : https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-346&m=dev (page hero)
+*/
 :root {
-  --color-bg: #0f172a;
-  --color-surface: rgba(59, 130, 246, 0.87);
-  --color-surface-hover: rgba(59, 130, 246, 0.92);
-  --color-primary: #3b82f6;
-  --color-primary-light: #60a5fa;
-  --color-text: #ffffff;
-  --color-text-muted: rgba(255, 255, 255, 0.85);
-  --color-success: #34d399;
-  --font-sans: system-ui, -apple-system, sans-serif;
+  /* Hero 9764-346 – page d'accueil DataShare (gradient orange → red, to bottom-right) */
+  --hero-bg-from: #fdba74;
+  --hero-bg-to: #f87171;
+  --hero-bg: linear-gradient(to bottom right, var(--hero-bg-from), var(--hero-bg-to));
+  --hero-title-color: #1b1b18;
+  --hero-title-size: 1.25rem;
+  --hero-title-weight: 600;
+  --hero-circle-inner: #1b1b18;
+  --hero-circle-ring: rgba(232, 146, 104, 0.55);
+  --hero-circle-glow: rgba(232, 146, 104, 0.35);
+  --hero-btn-connect-bg: #1b1b18;
+  --hero-btn-connect-hover: #2c2c2c;
+  --hero-footer-color: #1b1b18;
+
+  /* Couleurs – Figma 9764-12 / 9764-346. Coller les valeurs exactes depuis Inspect (mode Dev). */
+  --ds-bg: #0a0a0a;
+  --ds-bg-image: none;
+  --ds-surface: rgba(38, 38, 38, 0.95);
+  --ds-surface-hover: rgba(55, 55, 55, 0.98);
+  --ds-surface-card: rgba(38, 38, 38, 0.9);
+  --ds-primary: #10b981;
+  --ds-primary-hover: #34d399;
+  --ds-text: #fafafa;
+  --ds-text-muted: rgba(250, 250, 250, 0.85);
+  --ds-error: #f87171;
+  --ds-success: #34d399;
+  --ds-border: rgba(255, 255, 255, 0.1);
+  --ds-border-strong: rgba(255, 255, 255, 0.2);
+
+  /* Typo */
+  --ds-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --ds-title-size: 1.75rem;
+  --ds-title-weight: 700;
+  --ds-subtitle-size: 0.9375rem;
+  --ds-body-size: 0.9375rem;
+  --ds-caption-size: 0.8125rem;
+
+  /* Espacements (échelle 4px) */
+  --ds-space-xs: 0.25rem;
+  --ds-space-sm: 0.5rem;
+  --ds-space-md: 1rem;
+  --ds-space-lg: 1.5rem;
+  --ds-space-xl: 2rem;
+  --ds-space-2xl: 2.5rem;
+
+  /* Rayons */
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+
+  /* Glass (titres sur fond) */
+  --ds-glass-bg: rgba(16, 185, 129, 0.2);
+  --ds-glass-blur: 10px;
+
+  /* Layout */
+  --ds-content-max-width: 960px;
+  --header-height: 4.5rem;
+  --input-border: rgba(0, 0, 0, 0.15);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+
+  /* Overlay, inputs, tooltip (modales, champs, tooltips) */
+  --ds-overlay-bg: rgba(0, 0, 0, 0.6);
+  --ds-input-bg: rgba(255, 255, 255, 0.06);
+  --ds-input-bg-hover: rgba(255, 255, 255, 0.1);
+  --ds-tooltip-bg: rgba(0, 0, 0, 0.88);
+  --ds-tooltip-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --ds-on-primary: #fff;
+  --ds-error-border: rgba(248, 113, 113, 0.5);
+  --ds-error-bg-hover: rgba(248, 113, 113, 0.15);
+
+  /* Legacy aliases pour compat */
+  --color-bg: var(--ds-bg);
+  --color-surface: var(--ds-surface);
+  --color-surface-hover: var(--ds-surface-hover);
+  --color-primary: var(--ds-primary);
+  --color-primary-light: var(--ds-primary-hover);
+  --color-text: var(--ds-text);
+  --color-text-muted: var(--ds-text-muted);
+  --color-success: var(--ds-success);
+  --font-sans: var(--ds-font-sans);
+  --glass-bg: var(--ds-glass-bg);
+  --glass-blur: var(--ds-glass-blur);
   --max-file-size: 100;
-  --glass-bg: rgba(125, 200, 218, 0.6);
-  --glass-blur: 10px;
 }
 
 *,
@@ -21,25 +103,25 @@
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  /* Image de fond Figma : placer l’asset exporté dans public/background.png (ou .jpg) */
-  background-image: url('./background.png');
+  font-family: var(--ds-font-sans);
+  background-color: var(--ds-bg) !important;
+  background-image: var(--ds-bg-image) !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: var(--color-text);
+  color: var(--ds-text);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
 
 #root {
   min-height: 100vh;
+  background-color: transparent !important;
 }
 
 a {
-  color: var(--color-primary-light);
+  color: var(--ds-primary-hover);
   text-decoration: none;
 }
 
@@ -57,14 +139,13 @@ textarea {
   font-family: inherit;
 }
 
-/* Effet glass derrière les textes directement sur le fond (lisibilité) */
 .glass-text {
   display: inline-block;
   width: fit-content;
   max-width: 100%;
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border-radius: 8px;
-  padding: 0.25em 0.5em;
+  background: var(--ds-glass-bg);
+  backdrop-filter: blur(var(--ds-glass-blur));
+  -webkit-backdrop-filter: blur(var(--ds-glass-blur));
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-space-xs) var(--ds-space-sm);
 }

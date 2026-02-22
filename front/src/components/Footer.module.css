@@ -1,15 +1,12 @@
+/* DataShare – Footer Figma 9764-346 (--hero-footer-color dans index.css) */
 .footer {
-  padding: 1rem 2rem;
-  text-align: center;
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  max-width: 900px;
-  margin: 0 auto;
+  padding: var(--ds-space-sm) var(--ds-space-xl);
+  text-align: left;
+  color: var(--hero-footer-color);
+  font-size: var(--ds-caption-size);
+  font-weight: 400;
+  background: transparent;
+  border-top: none;
   width: 100%;
   box-sizing: border-box;
-}
-
-.footer.glass-text {
-  padding: 1rem 2rem;
 }

@@ -1,0 +1,128 @@
+/* DataShare – Page Connexion (Figma node 9764-313) */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--hero-bg-from) 0%, var(--hero-bg-to) 100%);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ds-space-xl);
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--card-shadow);
+  padding: var(--ds-space-xl);
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  margin: 0 0 var(--ds-space-lg);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--hero-title-color);
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-md);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-xs);
+  font-size: var(--ds-body-size);
+  color: var(--hero-title-color);
+}
+
+.input {
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  border: 1px solid var(--input-border);
+  border-radius: var(--ds-radius-sm);
+  background: #fff;
+  color: var(--hero-title-color);
+  font-size: var(--ds-body-size);
+}
+
+.input::placeholder {
+  color: #6b7280;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--hero-bg-to);
+}
+
+.error {
+  color: var(--ds-error);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.linkWrap {
+  align-self: stretch;
+  margin: var(--ds-space-sm) 0 0;
+  padding: 0.75rem;
+  border-radius: var(--ds-radius-md);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link {
+  color: #f97316;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.submit {
+  align-self: stretch;
+  margin-top: var(--ds-space-md);
+  padding: 0.75rem;
+  background: rgba(251, 146, 60, 0.1);
+  color: #b45309;
+  border: none;
+  border-radius: var(--ds-radius-md);
+  outline: 1px solid rgba(180, 83, 9, 0.5);
+  outline-offset: -1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, outline-color 0.2s ease;
+}
+
+.submit:hover:not(:disabled) {
+  background: rgba(251, 146, 60, 0.18);
+  outline-color: rgba(180, 83, 9, 0.7);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

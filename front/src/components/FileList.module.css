@@ -1,88 +1,89 @@
+/* DataShare – Liste de fichiers (Figma node 9764-274) */
 .stats {
-  margin: 0 0 0.75rem;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  margin: 0 0 var(--ds-space-md);
+  font-size: var(--ds-body-size);
+  color: var(--ds-text-muted);
 }
 
 .filterRow {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: var(--ds-space-sm);
+  margin-bottom: var(--ds-space-md);
 }
 
 .filterLabel {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  font-size: var(--ds-body-size);
+  color: var(--ds-text-muted);
 }
 
 .filterHint {
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--ds-text-muted);
   font-style: italic;
 }
 
 .filterButtons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: var(--ds-space-xs);
 }
 
 .filterBtn,
 .filterBtnActive {
-  padding: 0.35rem 0.75rem;
-  border-radius: 6px;
+  padding: var(--ds-space-xs) var(--ds-space-md);
+  border-radius: var(--ds-radius-sm);
   font-size: 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text);
+  border: 1px solid var(--ds-border-strong);
+  background: var(--ds-input-bg);
+  color: var(--ds-text);
   cursor: pointer;
 }
 
 .filterBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--ds-input-bg-hover);
 }
 
 .filterBtnActive {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
+  background: var(--ds-primary);
+  border-color: var(--ds-primary);
+  color: var(--ds-on-primary);
 }
 
 .subtitle {
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 1.25rem 0 0.5rem;
-  color: var(--color-text);
+  margin: var(--ds-space-lg) 0 var(--ds-space-sm);
+  color: var(--ds-text);
 }
 
 .card {
-  background: rgba(59, 130, 246, 0.95);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--ds-surface-card);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-lg);
+  border: 1px solid var(--ds-border);
 }
 
 .emptyWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--ds-space-md);
 }
 
 .emptyIcon {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: var(--color-primary-light);
+  color: var(--ds-primary-hover);
   opacity: 0.9;
 }
 
 .empty {
   margin: 0;
   text-align: center;
-  color: var(--color-text-muted);
+  color: var(--ds-text-muted);
 }
 
 .list {

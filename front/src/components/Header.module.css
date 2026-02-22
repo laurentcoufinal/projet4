@@ -1,60 +1,141 @@
+/* DataShare – Header (Figma node 9764-148 / 9764-346 hero) */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background: var(--color-surface);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--ds-space-md) var(--ds-space-xl);
+  background: var(--ds-surface);
+  border-bottom: 1px solid var(--ds-border);
+}
+
+.headerHero {
+  background: transparent;
+  border-bottom: none;
+}
+
+.headerHero .logoTitle {
+  color: var(--hero-title-color);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--ds-space-md);
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav a {
+  text-decoration: none;
 }
 
 .logoIcon {
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
-  color: var(--color-primary-light);
-  opacity: 0.9;
+  color: var(--ds-primary-hover);
+  opacity: 0.95;
 }
 
 .logoTitle {
-  font-weight: 700;
+  font-weight: var(--ds-title-weight);
   font-size: 1.25rem;
+  color: var(--ds-text);
 }
 
 .logoSubtitle {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
+  font-size: var(--ds-caption-size);
+  color: var(--ds-text-muted);
 }
 
 .nav {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--ds-space-md);
 }
 
 .navBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--color-primary);
+  gap: var(--ds-space-sm);
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  background: var(--ds-primary);
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: var(--ds-radius-sm);
+  font-size: var(--ds-body-size);
   font-weight: 500;
 }
 
 .navBtn:hover {
-  background: var(--color-primary-light);
+  background: var(--ds-primary-hover);
+}
+
+.navBtnConnect {
+  background: var(--hero-btn-connect-bg);
+  color: #fff;
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-space-sm) var(--ds-space-lg);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navBtnConnect:hover {
+  background: var(--hero-btn-connect-hover);
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .navIcon {
   width: 1.25rem;
   height: 1.25rem;
   flex-shrink: 0;
+}
+
+/* Variant partager (page Mes fichiers) */
+.navBtnPartagerAdd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: #27272a;
+  color: #fafaf5;
+  border: none;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.navBtnPartagerAdd:hover {
+  background: #3f3f46;
+}
+
+.navBtnPartagerLogout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #e27f29;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.navBtnPartagerLogout:hover {
+  color: #b45309;
+}
+
+.navBtnPartagerLogoutIcon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
 }

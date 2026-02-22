@@ -1,0 +1,151 @@
+/* DataShare – Ligne fichier (design fourni: cartes orange-300/5, outline amber-600/20) */
+.row {
+  align-self: stretch;
+  padding: 0.5rem 1rem;
+  background: rgba(253, 186, 116, 0.05); /* orange-300/5 */
+  border-radius: 0.5rem;
+  outline: 1px solid rgba(217, 119, 6, 0.2); /* outline-amber-600/20 */
+  outline-offset: -1px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #000;
+}
+
+.nameBlock {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lockIcon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1rem;
+  color: #000;
+}
+
+.statusExpired {
+  color: #b91c1c; /* red-700 */
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btnDelete {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  outline: 1px solid rgba(253, 186, 116, 1); /* outline-orange-300 */
+  outline-offset: -1px;
+  background: transparent;
+  border: none;
+  color: #e27f29;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.btnDelete:hover:not(:disabled) {
+  background: rgba(253, 186, 116, 0.1);
+}
+
+.btnDelete:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btnAccess {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  outline: 1px solid rgba(253, 186, 116, 1);
+  outline-offset: -1px;
+  background: transparent;
+  border: none;
+  color: #e27f29;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.btnAccess:hover {
+  background: rgba(253, 186, 116, 0.1);
+}
+
+.btnLink {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  outline: 1px solid rgba(253, 186, 116, 1);
+  outline-offset: -1px;
+  background: transparent;
+  border: none;
+  color: #e27f29;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.btnLink:hover:not(:disabled) {
+  background: rgba(253, 186, 116, 0.1);
+}
+
+.btnLink:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.expiredMessage {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+}

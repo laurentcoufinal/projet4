@@ -1,28 +1,29 @@
+/* DataShare – Section Mes fichiers (Figma node 9764-274) */
 .section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--ds-space-xl);
 }
 
 .title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0 0 1rem;
-  color: var(--color-text);
+  font-size: var(--ds-title-size);
+  font-weight: var(--ds-title-weight);
+  margin: 0 0 var(--ds-space-md);
+  color: var(--ds-text);
 }
 
 .title.glass-text {
-  background-color: rgba(59, 113, 146, 0.6);
+  background-color: var(--ds-glass-bg);
   border: none;
 }
 
 .card {
-  background: var(--color-surface);
-  border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--ds-surface-card);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-xl);
+  border: 1px solid var(--ds-border);
 }
 
 .loginPrompt {
   margin: 0;
   text-align: center;
-  color: var(--color-text-muted);
+  color: var(--ds-text-muted);
 }

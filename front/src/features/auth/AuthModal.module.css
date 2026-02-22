@@ -1,7 +1,8 @@
+/* DataShare – Modales Connexion / Inscription (Figma node 9764-506) */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--ds-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,27 +10,29 @@
 }
 
 .modal {
-  background: var(--color-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
+  background: var(--ds-bg);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-lg) var(--ds-space-xl);
   min-width: 320px;
   max-width: 90vw;
 }
 
 .title {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--ds-space-md);
   font-size: 1.25rem;
+  font-weight: var(--ds-title-weight);
+  color: var(--ds-text);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--ds-space-md);
 }
 
 .error {
-  color: #f87171;
+  color: var(--ds-error);
   font-size: 0.875rem;
   margin: 0;
 }
@@ -37,41 +40,42 @@
 .label {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.9rem;
+  gap: var(--ds-space-xs);
+  font-size: var(--ds-body-size);
+  color: var(--ds-text);
 }
 
 .input {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text);
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-input-bg);
+  color: var(--ds-text);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--ds-primary);
 }
 
 .actions {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--ds-space-md);
   justify-content: flex-end;
-  margin-top: 0.5rem;
+  margin-top: var(--ds-space-sm);
 }
 
 .primary {
-  padding: 0.5rem 1rem;
-  background: var(--color-primary);
-  color: white;
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  background: var(--ds-primary);
+  color: var(--ds-on-primary);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--ds-radius-sm);
   font-weight: 500;
 }
 
 .primary:hover:not(:disabled) {
-  background: var(--color-primary-light);
+  background: var(--ds-primary-hover);
 }
 
 .primary:disabled {
@@ -80,32 +84,33 @@
 }
 
 .secondary {
-  padding: 0.5rem 1rem;
+  padding: var(--ds-space-sm) var(--ds-space-md);
   background: transparent;
-  color: var(--color-text-muted);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
+  color: var(--ds-text-muted);
+  border: 1px solid var(--ds-border-strong);
+  border-radius: var(--ds-radius-sm);
 }
 
 .secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--ds-input-bg);
 }
 
 .switch {
-  margin: 1rem 0 0;
+  margin: var(--ds-space-md) 0 0;
   font-size: 0.875rem;
-  color: var(--color-text-muted);
+  color: var(--ds-text-muted);
 }
 
 .linkBtn {
   background: none;
   border: none;
-  color: var(--color-primary-light);
+  color: var(--ds-primary-hover);
   padding: 0;
   font-size: inherit;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .linkBtn:hover {
-  color: var(--color-primary);
+  color: var(--ds-primary);
 }

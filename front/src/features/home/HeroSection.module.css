@@ -1,0 +1,57 @@
+/* DataShare – Hero page d'accueil Figma 9764-346 */
+.hero {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  /* Dégradé to bottom-right : orange-300 → red-400 */
+  background: var(--hero-bg);
+}
+
+.title {
+  font-family: var(--ds-font-sans);
+  font-size: var(--hero-title-size);
+  font-weight: var(--hero-title-weight);
+  color: var(--hero-title-color);
+  margin: 0 0 2rem;
+  max-width: 18ch;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.pill {
+  padding: 1.5rem;
+  background: rgba(28, 25, 23, 0.2);
+  border-radius: 240px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pill:hover {
+  transform: scale(1.05);
+}
+
+.pillInner {
+  padding: 1.5rem;
+  background: #020617;
+  border-radius: 240px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.iconWrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
