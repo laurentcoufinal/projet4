@@ -18,12 +18,17 @@ test.describe('Liste des fichiers', () => {
     await expect(page.getByRole('tab', { name: 'Tous' })).toBeVisible()
     // Après chargement : message vide ou liste de fichiers
     await expect(
-      page.getByText(/Aucun fichier pour le moment\./).or(page.getByRole('list')).or(page.getByText('Chargement…'))
+      page
+        .getByText(/Aucun fichier pour le moment\./)
+        .or(page.getByRole('list'))
+        .or(page.getByText('Chargement…'))
     ).toBeVisible({ timeout: 15000 })
   })
 
   test('affiche les onglets Tous, Actifs, Expiré', async ({ page }) => {
-    await expect(page.getByRole('tablist', { name: /Filtrer les fichiers/i })).toBeVisible({ timeout: 5000 })
+    await expect(page.getByRole('tablist', { name: /Filtrer les fichiers/i })).toBeVisible({
+      timeout: 5000,
+    })
     await expect(page.getByRole('tab', { name: 'Tous' })).toBeVisible()
     await expect(page.getByRole('tab', { name: 'Actifs' })).toBeVisible()
     await expect(page.getByRole('tab', { name: 'Expiré' })).toBeVisible()

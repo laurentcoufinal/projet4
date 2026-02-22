@@ -8,19 +8,19 @@ Les couleurs et styles du hero sont centralisés dans **`src/styles/index.css`**
 
 ## Variables à coller dans `:root` (index.css)
 
-| Variable | Rôle | Valeur actuelle (à remplacer par Inspect) |
-|----------|------|------------------------------------------|
-| `--hero-bg-from` | Dégradé fond (haut) | `#fef4ec` |
-| `--hero-bg-to` | Dégradé fond (bas) | `#e89268` |
-| `--hero-title-color` | Couleur titre | `#1b1b18` |
-| `--hero-title-size` | Taille titre | `1.25rem` |
-| `--hero-title-weight` | Graisse titre | `600` |
-| `--hero-circle-inner` | Fill cercle upload | `#554970` |
-| `--hero-circle-ring` | Anneau du cercle | `rgba(139, 92, 246, 0.4)` |
-| `--hero-circle-glow` | Glow du cercle | `rgba(167, 139, 250, 0.45)` |
-| `--hero-btn-connect-bg` | Bouton Se connecter | `#1b1b18` |
-| `--hero-btn-connect-hover` | Hover Se connecter | `#2c2c2c` |
-| `--hero-footer-color` | Copyright | `#6b7280` |
+| Variable                   | Rôle                | Valeur actuelle (à remplacer par Inspect) |
+| -------------------------- | ------------------- | ----------------------------------------- |
+| `--hero-bg-from`           | Dégradé fond (haut) | `#fef4ec`                                 |
+| `--hero-bg-to`             | Dégradé fond (bas)  | `#e89268`                                 |
+| `--hero-title-color`       | Couleur titre       | `#1b1b18`                                 |
+| `--hero-title-size`        | Taille titre        | `1.25rem`                                 |
+| `--hero-title-weight`      | Graisse titre       | `600`                                     |
+| `--hero-circle-inner`      | Fill cercle upload  | `#554970`                                 |
+| `--hero-circle-ring`       | Anneau du cercle    | `rgba(139, 92, 246, 0.4)`                 |
+| `--hero-circle-glow`       | Glow du cercle      | `rgba(167, 139, 250, 0.45)`               |
+| `--hero-btn-connect-bg`    | Bouton Se connecter | `#1b1b18`                                 |
+| `--hero-btn-connect-hover` | Hover Se connecter  | `#2c2c2c`                                 |
+| `--hero-footer-color`      | Copyright           | `#6b7280`                                 |
 
 ---
 

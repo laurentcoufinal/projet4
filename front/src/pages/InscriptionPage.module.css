@@ -114,7 +114,9 @@
   font-weight: 400;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s ease, outline-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    outline-color 0.2s ease;
 }
 
 .submit:hover:not(:disabled) {

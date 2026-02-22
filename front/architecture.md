@@ -18,22 +18,22 @@ Cette section décrit l’usage de DataShare par un **utilisateur final** : les 
 
 ### Les pages et leur rôle
 
-| Page | URL | Rôle |
-|------|-----|------|
-| **Accueil** | `/` | Présentation de DataShare : titre « Tu veux partager un fichier ? », visuel, lien « Se connecter » en haut à droite. Point d’entrée pour un visiteur. |
-| **Connexion** | `/connection` | Formulaire de connexion (email, mot de passe). Lien vers « Créer un compte ». Après connexion → redirection vers « Mes fichiers » (`/partager`). |
-| **Créer un compte** | `/inscription` | Formulaire d’inscription (email, mot de passe, vérification du mot de passe). Lien vers « J’ai déjà un compte ». Après inscription → redirection vers l’accueil. |
-| **Mes fichiers** | `/partager` | Liste des fichiers de l’utilisateur (s’il est connecté). Onglets : Tous, Actifs, Expiré. Actions : ajouter des fichiers, pour chaque fichier : accéder (télécharger), partager (créer un lien), supprimer. Si non connecté : message « Connectez-vous pour voir et gérer vos fichiers » et lien Connexion. |
-| **Fichier partagé** | `/shared/:token` | Page affichée quand on ouvre un **lien de partage** reçu (ex. par email). Affiche « Fichier partagé » et un bouton « Télécharger le fichier ». Si le lien est expiré ou invalide : message d’erreur et lien « Retour à l’accueil ». Aucune connexion requise. |
+| Page                | URL              | Rôle                                                                                                                                                                                                                                                                                                       |
+| ------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Accueil**         | `/`              | Présentation de DataShare : titre « Tu veux partager un fichier ? », visuel, lien « Se connecter » en haut à droite. Point d’entrée pour un visiteur.                                                                                                                                                      |
+| **Connexion**       | `/connection`    | Formulaire de connexion (email, mot de passe). Lien vers « Créer un compte ». Après connexion → redirection vers « Mes fichiers » (`/partager`).                                                                                                                                                           |
+| **Créer un compte** | `/inscription`   | Formulaire d’inscription (email, mot de passe, vérification du mot de passe). Lien vers « J’ai déjà un compte ». Après inscription → redirection vers l’accueil.                                                                                                                                           |
+| **Mes fichiers**    | `/partager`      | Liste des fichiers de l’utilisateur (s’il est connecté). Onglets : Tous, Actifs, Expiré. Actions : ajouter des fichiers, pour chaque fichier : accéder (télécharger), partager (créer un lien), supprimer. Si non connecté : message « Connectez-vous pour voir et gérer vos fichiers » et lien Connexion. |
+| **Fichier partagé** | `/shared/:token` | Page affichée quand on ouvre un **lien de partage** reçu (ex. par email). Affiche « Fichier partagé » et un bouton « Télécharger le fichier ». Si le lien est expiré ou invalide : message d’erreur et lien « Retour à l’accueil ». Aucune connexion requise.                                              |
 
 ### Cheminement type (utilisateur qui dépose et partage)
 
 1. **Arrivée** : L’utilisateur ouvre l’application (accueil `/`).
 2. **Connexion** : Il clique sur « Se connecter » → page Connexion. Il saisit email et mot de passe → Connexion → il est redirigé vers **Mes fichiers** (`/partager`).  
-   *(S’il n’a pas de compte : « Créer un compte » → page Inscription → après création, il peut aller sur Mes fichiers via le menu ou en saisissant `/partager`.)*
-3. **Mes fichiers** : Il voit la liste (vide au début). Il peut :  
-   - **Ajouter des fichiers** : bouton « Ajouter des fichiers » → fenêtre modale : choix du fichier (max 1 Go), optionnellement mot de passe et durée de validité du lien → « Téléverser » → le fichier est enregistré et un lien de partage peut être créé.  
-   - **Pour chaque fichier** : **Accéder** (télécharger, avec saisie du mot de passe si le fichier en exige un), **Partager** (créer un lien temporaire, copier l’URL), **Supprimer** (avec confirmation).  
+   _(S’il n’a pas de compte : « Créer un compte » → page Inscription → après création, il peut aller sur Mes fichiers via le menu ou en saisissant `/partager`.)_
+3. **Mes fichiers** : Il voit la liste (vide au début). Il peut :
+   - **Ajouter des fichiers** : bouton « Ajouter des fichiers » → fenêtre modale : choix du fichier (max 1 Go), optionnellement mot de passe et durée de validité du lien → « Téléverser » → le fichier est enregistré et un lien de partage peut être créé.
+   - **Pour chaque fichier** : **Accéder** (télécharger, avec saisie du mot de passe si le fichier en exige un), **Partager** (créer un lien temporaire, copier l’URL), **Supprimer** (avec confirmation).
    - **Filtrer** : onglets Tous / Actifs / Expiré.
 4. **Partager avec quelqu’un** : Depuis « Partager » sur une ligne fichier, il obtient une URL (ex. `.../shared/abc123`). Il envoie ce lien au destinataire (email, messagerie, etc.).
 5. **Déconnexion** : Bouton « Déconnexion » (en haut à droite sur Mes fichiers, ou dans le menu sur mobile) → retour à l’accueil, session fermée.
@@ -71,57 +71,57 @@ Cette section décrit l’usage de DataShare par un **utilisateur final** : les 
 
 ### Responsabilités par dossier
 
-| Dossier / module | Responsabilité |
-|------------------|----------------|
-| [src/api/](src/api/) | Client HTTP (client.ts), appels auth (auth.ts) et fichiers (files.ts) ; pas de logique métier UI. |
-| [src/features/auth/](src/features/auth/) | Store Zustand (token, user, setAuth, logout), persistance ; modals Login/Register (utilisées sur les pages dédiées) ; extraction des messages d’erreur API. |
+| Dossier / module                           | Responsabilité                                                                                                                                                                                                                                                    |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [src/api/](src/api/)                       | Client HTTP (client.ts), appels auth (auth.ts) et fichiers (files.ts) ; pas de logique métier UI.                                                                                                                                                                 |
+| [src/features/auth/](src/features/auth/)   | Store Zustand (token, user, setAuth, logout), persistance ; modals Login/Register (utilisées sur les pages dédiées) ; extraction des messages d’erreur API.                                                                                                       |
 | [src/features/files/](src/features/files/) | Upload (AddFilesModal, DropZone côté ShareFilesSection), liste (MesFileRow, PartagerPage), partage par lien (ShareLinkModal), téléchargement avec mot de passe (DownloadFileModalWithPassword), suppression (DeleteConfirmModal), utilitaires (mesFichiersUtils). |
-| [src/features/home/](src/features/home/) | Hero (titre, bouton circulaire) sur la page d’accueil. |
-| [src/components/](src/components/) | En-tête, pied de page, DropZone, FileList, FileRow, Icons ; réutilisables, peu de dépendances métier. |
-| [src/hooks/](src/hooks/) | useFiles (React Query), useMediaQuery (responsive). |
-| [src/pages/](src/pages/) | Point d’entrée par route : FileSharePage (/), PartagerPage (/partager), ConnectionPage (/connection), InscriptionPage (/inscription), SharedFilePage (/shared/:token). |
-| [src/types/](src/types/) | Interfaces TypeScript partagées (User, FileItem, AuthResponse, etc.). |
+| [src/features/home/](src/features/home/)   | Hero (titre, bouton circulaire) sur la page d’accueil.                                                                                                                                                                                                            |
+| [src/components/](src/components/)         | En-tête, pied de page, DropZone, FileList, FileRow, Icons ; réutilisables, peu de dépendances métier.                                                                                                                                                             |
+| [src/hooks/](src/hooks/)                   | useFiles (React Query), useMediaQuery (responsive).                                                                                                                                                                                                               |
+| [src/pages/](src/pages/)                   | Point d’entrée par route : FileSharePage (/), PartagerPage (/partager), ConnectionPage (/connection), InscriptionPage (/inscription), SharedFilePage (/shared/:token).                                                                                            |
+| [src/types/](src/types/)                   | Interfaces TypeScript partagées (User, FileItem, AuthResponse, etc.).                                                                                                                                                                                             |
 
 ### Point d’entrée et routage
 
-| Fonction | Fichier | Rôle |
-|----------|---------|------|
-| Point d’entrée | [src/main.tsx](src/main.tsx) | Montage React, QueryClientProvider, BrowserRouter. |
-| Définition des routes | [src/App.tsx](src/App.tsx) | `/` → FileSharePage, `/partager` → PartagerPage, `/connection` → ConnectionPage, `/inscription` → InscriptionPage, `/shared/:token` → SharedFilePage. |
-| Page d’accueil | [src/pages/FileSharePage.tsx](src/pages/FileSharePage.tsx) | Hero DataShare, Header (variant hero), Footer. |
-| Page Mes fichiers | [src/pages/PartagerPage.tsx](src/pages/PartagerPage.tsx) | Liste (MesFileRow), onglets Tous/Actifs/Expiré, AddFilesModal, ShareLinkModal, DownloadFileModalWithPassword, DeleteConfirmModal. |
-| Connexion / Inscription | [src/pages/ConnectionPage.tsx](src/pages/ConnectionPage.tsx), [src/pages/InscriptionPage.tsx](src/pages/InscriptionPage.tsx) | Pages dédiées (non modals) ; formulaire + appel API, redirection après succès. |
-| Fichier partagé (lien public) | [src/pages/SharedFilePage.tsx](src/pages/SharedFilePage.tsx) | Affichage et téléchargement via token (sans auth). |
+| Fonction                      | Fichier                                                                                                                      | Rôle                                                                                                                                                  |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Point d’entrée                | [src/main.tsx](src/main.tsx)                                                                                                 | Montage React, QueryClientProvider, BrowserRouter.                                                                                                    |
+| Définition des routes         | [src/App.tsx](src/App.tsx)                                                                                                   | `/` → FileSharePage, `/partager` → PartagerPage, `/connection` → ConnectionPage, `/inscription` → InscriptionPage, `/shared/:token` → SharedFilePage. |
+| Page d’accueil                | [src/pages/FileSharePage.tsx](src/pages/FileSharePage.tsx)                                                                   | Hero DataShare, Header (variant hero), Footer.                                                                                                        |
+| Page Mes fichiers             | [src/pages/PartagerPage.tsx](src/pages/PartagerPage.tsx)                                                                     | Liste (MesFileRow), onglets Tous/Actifs/Expiré, AddFilesModal, ShareLinkModal, DownloadFileModalWithPassword, DeleteConfirmModal.                     |
+| Connexion / Inscription       | [src/pages/ConnectionPage.tsx](src/pages/ConnectionPage.tsx), [src/pages/InscriptionPage.tsx](src/pages/InscriptionPage.tsx) | Pages dédiées (non modals) ; formulaire + appel API, redirection après succès.                                                                        |
+| Fichier partagé (lien public) | [src/pages/SharedFilePage.tsx](src/pages/SharedFilePage.tsx)                                                                 | Affichage et téléchargement via token (sans auth).                                                                                                    |
 
 ### Authentification
 
-| Fonction | Fichier | Rôle |
-|----------|---------|------|
+| Fonction                                 | Fichier                                                            | Rôle                                                          |
+| ---------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------- |
 | État auth (token, user, setAuth, logout) | [src/features/auth/auth-store.ts](src/features/auth/auth-store.ts) | Store Zustand persist (localStorage), `useIsAuthenticated()`. |
-| Appels API auth | [src/api/auth.ts](src/api/auth.ts) | login, register, logout, getCurrentUser. |
-| Client HTTP (Bearer, 401) | [src/api/client.ts](src/api/client.ts) | Axios, intercepteurs Authorization et déconnexion sur 401. |
-| Erreurs API | [src/features/auth/api-errors.ts](src/features/auth/api-errors.ts) | `getApiErrorMessage()` pour réponses Laravel. |
+| Appels API auth                          | [src/api/auth.ts](src/api/auth.ts)                                 | login, register, logout, getCurrentUser.                      |
+| Client HTTP (Bearer, 401)                | [src/api/client.ts](src/api/client.ts)                             | Axios, intercepteurs Authorization et déconnexion sur 401.    |
+| Erreurs API                              | [src/features/auth/api-errors.ts](src/features/auth/api-errors.ts) | `getApiErrorMessage()` pour réponses Laravel.                 |
 
 ### Upload et liste des fichiers
 
-| Fonction | Fichier | Rôle |
-|----------|---------|------|
-| Liste fichiers (React Query) | [src/hooks/useFiles.ts](src/hooks/useFiles.ts) | `useFiles()`, `filesQueryKey`, GET /files. |
-| API fichiers | [src/api/files.ts](src/api/files.ts) | list, upload, download, downloadWithPassword, delete, shareLink, share, unshare. |
-| Modal d’ajout (1 Go max) | [src/features/files/AddFilesModal.tsx](src/features/files/AddFilesModal.tsx) | Sélection fichier, mot de passe optionnel, expiration, upload + création de lien. |
-| Zone glisser-déposer | [src/components/DropZone.tsx](src/components/DropZone.tsx) | Drag & drop, validation taille (1 Go) et MIME, tags optionnels. |
-| Section Partager des fichiers | [src/features/files/ShareFilesSection.tsx](src/features/files/ShareFilesSection.tsx) | DropZone si connecté, limite affichée 1 Go. |
-| Ligne fichier (page Partager) | [src/features/files/MesFileRow.tsx](src/features/files/MesFileRow.tsx) | Nom, expiration, actions : accéder, partager (lien), supprimer. |
+| Fonction                                      | Fichier                                                                                                                                                                                                                                        | Rôle                                                                                 |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Liste fichiers (React Query)                  | [src/hooks/useFiles.ts](src/hooks/useFiles.ts)                                                                                                                                                                                                 | `useFiles()`, `filesQueryKey`, GET /files.                                           |
+| API fichiers                                  | [src/api/files.ts](src/api/files.ts)                                                                                                                                                                                                           | list, upload, download, downloadWithPassword, delete, shareLink, share, unshare.     |
+| Modal d’ajout (1 Go max)                      | [src/features/files/AddFilesModal.tsx](src/features/files/AddFilesModal.tsx)                                                                                                                                                                   | Sélection fichier, mot de passe optionnel, expiration, upload + création de lien.    |
+| Zone glisser-déposer                          | [src/components/DropZone.tsx](src/components/DropZone.tsx)                                                                                                                                                                                     | Drag & drop, validation taille (1 Go) et MIME, tags optionnels.                      |
+| Section Partager des fichiers                 | [src/features/files/ShareFilesSection.tsx](src/features/files/ShareFilesSection.tsx)                                                                                                                                                           | DropZone si connecté, limite affichée 1 Go.                                          |
+| Ligne fichier (page Partager)                 | [src/features/files/MesFileRow.tsx](src/features/files/MesFileRow.tsx)                                                                                                                                                                         | Nom, expiration, actions : accéder, partager (lien), supprimer.                      |
 | Modals partage / téléchargement / suppression | [src/features/files/ShareLinkModal.tsx](src/features/files/ShareLinkModal.tsx), [DownloadFileModalWithPassword.tsx](src/features/files/DownloadFileModalWithPassword.tsx), [DeleteConfirmModal.tsx](src/features/files/DeleteConfirmModal.tsx) | Partage par lien, téléchargement (avec/sans mot de passe), confirmation suppression. |
 
 ### Styles et configuration
 
-| Fonction | Fichier | Rôle |
-|----------|---------|------|
-| Types partagés | [src/types/index.ts](src/types/index.ts) | User, FileItem, ShareLinkItem, LoginCredentials, AuthResponse, etc. |
-| Variables d’environnement | [src/vite-env.d.ts](src/vite-env.d.ts) | Déclaration `VITE_API_BASE_URL`. |
-| Styles globaux | [src/styles/index.css](src/styles/index.css) | Variables CSS, thème, classes utilitaires. |
-| Styles composants | `*.module.css` à côté des composants | Modules CSS scopés. |
+| Fonction                  | Fichier                                      | Rôle                                                                |
+| ------------------------- | -------------------------------------------- | ------------------------------------------------------------------- |
+| Types partagés            | [src/types/index.ts](src/types/index.ts)     | User, FileItem, ShareLinkItem, LoginCredentials, AuthResponse, etc. |
+| Variables d’environnement | [src/vite-env.d.ts](src/vite-env.d.ts)       | Déclaration `VITE_API_BASE_URL`.                                    |
+| Styles globaux            | [src/styles/index.css](src/styles/index.css) | Variables CSS, thème, classes utilitaires.                          |
+| Styles composants         | `*.module.css` à côté des composants         | Modules CSS scopés.                                                 |
 
 ---
 
@@ -157,14 +157,14 @@ Intégration externe : **API Laravel** uniquement (base URL via `VITE_API_BASE_U
 
 ## Annexe A — Termes techniques
 
-| Terme | Définition courte |
-|-------|-------------------|
-| **API** | Interface permettant à des logiciels d’échanger des données (REST, GraphQL, etc.). |
-| **Backend** | Partie serveur de l’application (logique métier, base de données, APIs). |
-| **Composant** | Unité logicielle avec une responsabilité claire, réutilisable. |
-| **Couche** | Niveau logique dans l’architecture (présentation, métier, données). |
-| **Frontend** | Partie cliente (navigateur) : UI et interaction utilisateur. |
-| **Modèle de données** | Structure des entités et relations (côté front : types TypeScript ; données réelles côté back). |
-| **Persistance** | Stockage durable des données (côté front : localStorage pour le token ; données métier côté back). |
-| **Service** | Composant exposant une fonctionnalité (ex. client API). |
-| **Stack** | Ensemble des technologies utilisées (langage, framework, BDD, infra). |
+| Terme                 | Définition courte                                                                                  |
+| --------------------- | -------------------------------------------------------------------------------------------------- |
+| **API**               | Interface permettant à des logiciels d’échanger des données (REST, GraphQL, etc.).                 |
+| **Backend**           | Partie serveur de l’application (logique métier, base de données, APIs).                           |
+| **Composant**         | Unité logicielle avec une responsabilité claire, réutilisable.                                     |
+| **Couche**            | Niveau logique dans l’architecture (présentation, métier, données).                                |
+| **Frontend**          | Partie cliente (navigateur) : UI et interaction utilisateur.                                       |
+| **Modèle de données** | Structure des entités et relations (côté front : types TypeScript ; données réelles côté back).    |
+| **Persistance**       | Stockage durable des données (côté front : localStorage pour le token ; données métier côté back). |
+| **Service**           | Composant exposant une fonctionnalité (ex. client API).                                            |
+| **Stack**             | Ensemble des technologies utilisées (langage, framework, BDD, infra).                              |

@@ -5,14 +5,14 @@ Design Figma : **DataShare**
 
 ## Liens Figma (mode Dev, pour Inspect)
 
-| Node | Zone | Lien |
-|------|------|------|
-| 9764-12 | Frame principal / page | [Ouvrir 9764-12](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-12&m=dev) |
+| Node     | Zone                                        | Lien                                                                                                    |
+| -------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| 9764-12  | Frame principal / page                      | [Ouvrir 9764-12](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-12&m=dev)   |
 | 9764-346 | Page d'accueil (hero, titre, CTA Connexion) | [Ouvrir 9764-346](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-346&m=dev) |
-| 9764-148 | Header / section partager | [Ouvrir 9764-148](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-148&m=dev) |
-| 9764-274 | Section liste / Mes fichiers | [Ouvrir 9764-274](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-274&m=dev) |
-| 9764-357 | Dropzone / cartes | [Ouvrir 9764-357](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-357&m=dev) |
-| 9764-506 | Modales (connexion, partage) | [Ouvrir 9764-506](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-506&m=dev) |
+| 9764-148 | Header / section partager                   | [Ouvrir 9764-148](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-148&m=dev) |
+| 9764-274 | Section liste / Mes fichiers                | [Ouvrir 9764-274](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-274&m=dev) |
+| 9764-357 | Dropzone / cartes                           | [Ouvrir 9764-357](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-357&m=dev) |
+| 9764-506 | Modales (connexion, partage)                | [Ouvrir 9764-506](https://www.figma.com/design/EcJYxMPftd5S3w4JH3xYQw/DataShare?node-id=9764-506&m=dev) |
 
 ## Migration des styles (procédure)
 
@@ -55,4 +55,4 @@ Pour désactiver l'image de fond : `--ds-bg-image: none;`
 - **Migration lancée** : 2026-02-21
 - **Sauvegarde CSS** : `docs/index.css.before-migration` (valeurs avant migration)
 - **Tokens appliqués** : valeurs DataShare (fond #0c1222, primary #2563eb, espacements/rayons unifiés). Pour coller les valeurs exactes du Figma : `docs/figma-tokens.md` puis `src/styles/index.css`.
-- Version du fichier Figma : *(à remplir si connue)*
+- Version du fichier Figma : _(à remplir si connue)_

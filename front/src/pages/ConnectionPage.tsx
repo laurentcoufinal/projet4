@@ -40,8 +40,7 @@ export function ConnectionPage() {
           <form onSubmit={handleSubmit} className={styles.form}>
             {error && <p className={styles.error}>{error}</p>}
             <label className={styles.label}>
-              Email
-              {' '}
+              Email{' '}
               <input
                 type="email"
                 value={form.email}
@@ -53,8 +52,7 @@ export function ConnectionPage() {
               />
             </label>
             <label className={styles.label}>
-              Mot de passe
-              {' '}
+              Mot de passe{' '}
               <input
                 type="password"
                 value={form.password}

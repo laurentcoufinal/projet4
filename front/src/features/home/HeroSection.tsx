@@ -9,11 +9,7 @@ export function HeroSection() {
       <h1 id="hero-title" className={styles.title}>
         Tu veux partager un fichier ?
       </h1>
-      <button
-        type="button"
-        className={styles.pill}
-        aria-label="Partager un fichier"
-      >
+      <button type="button" className={styles.pill} aria-label="Partager un fichier">
         <div className={styles.pillInner}>
           <div className={styles.iconWrap} data-svg-wrapper data-size="48">
             <svg

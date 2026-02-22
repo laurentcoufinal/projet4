@@ -4,10 +4,10 @@
 
 ## Deux applications dans le projet
 
-| Dossier | Techno | URL typique | Design |
-|--------|--------|-------------|--------|
-| **`projet4/front/`** | React + Vite | **http://localhost:5173** | DataShare (Figma) – fond #0c1222, variables --ds-* |
-| **`projet4/back/`** | Laravel + Vite + Blade | http://localhost:8000 | Page d’accueil Laravel (Tailwind, autre style) |
+| Dossier              | Techno                 | URL typique               | Design                                              |
+| -------------------- | ---------------------- | ------------------------- | --------------------------------------------------- |
+| **`projet4/front/`** | React + Vite           | **http://localhost:5173** | DataShare (Figma) – fond #0c1222, variables --ds-\* |
+| **`projet4/back/`**  | Laravel + Vite + Blade | http://localhost:8000     | Page d’accueil Laravel (Tailwind, autre style)      |
 
 Si vous ouvrez **http://localhost:8000**, vous voyez l’app **Laravel** (back), pas le design DataShare.
 

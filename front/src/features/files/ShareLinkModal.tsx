@@ -36,7 +36,7 @@ export function ShareLinkModal({
 
   useEffect(() => {
     shareLinkMutation.mutate(expiresInDays)
-  }, [file.id])
+  }, [file.id, expiresInDays, shareLinkMutation])
 
   const handleCreateLink = () => {
     shareLinkMutation.mutate(expiresInDays)
@@ -90,7 +90,8 @@ export function ShareLinkModal({
               />
             </div>
             <p className={styles.hint}>
-              Ce lien permet de télécharger le fichier. Il est valide {expiresInDays} jour{expiresInDays > 1 ? 's' : ''}.
+              Ce lien permet de télécharger le fichier. Il est valide {expiresInDays} jour
+              {expiresInDays > 1 ? 's' : ''}.
             </p>
           </>
         )}
@@ -110,8 +111,18 @@ export function ShareLinkModal({
           </button>
           {shareUrl && (
             <button type="button" className={styles.btnCopy} onClick={handleCopy}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <path d="M5.33333 5.33333H11.3333V11.3333H5.33333V5.33333ZM4 4V12.6667H12.6667V4H4ZM10.6667 2H2.66667C2.29848 2 2 2.29848 2 2.66667V10.6667H4V3.33333H12C12.3682 3.33333 12.6667 3.03486 12.6667 2.66667V2H10.6667Z" fill="currentColor" />
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <path
+                  d="M5.33333 5.33333H11.3333V11.3333H5.33333V5.33333ZM4 4V12.6667H12.6667V4H4ZM10.6667 2H2.66667C2.29848 2 2 2.29848 2 2.66667V10.6667H4V3.33333H12C12.3682 3.33333 12.6667 3.03486 12.6667 2.66667V2H10.6667Z"
+                  fill="currentColor"
+                />
               </svg>
               {copied ? 'Copié !' : 'Copier le lien'}
             </button>

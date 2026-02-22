@@ -7,11 +7,13 @@ Application React de partage de fichiers (design Figma DataShare), connectée à
 - Node.js (version supportée par le projet)
 - Backend Laravel démarré pour l’API (et pour les tests e2e)
 
+### Scripts de déploiement : installation
+
 ```bash
 npm install
 ```
 
-Copier `.env.example` vers `.env` et renseigner `VITE_API_BASE_URL` (ex. `http://localhost:8000/api`). Le backend doit être démarré pour l’API et pour les tests e2e.
+Copier `.env.example` vers `.env` et renseigner `VITE_API_BASE_URL` (ex. `http://localhost:8000/api`). Pas de configuration BDD côté front (la BDD est gérée par le backend). Le backend doit être démarré pour l’API et pour les tests e2e.
 
 ---
 
@@ -75,11 +77,11 @@ Les derniers résultats peuvent être enregistrés dans `e2e-results.txt` et `e2
 
 ## Autres commandes
 
-| Commande           | Description                    |
-|--------------------|--------------------------------|
-| `npm run build`    | Build de production            |
-| `npm run preview`  | Prévisualiser le build         |
-| `npm run lint`     | ESLint                         |
-| `npm run format`   | Prettier (écriture)            |
+| Commande               | Description                   |
+| ---------------------- | ----------------------------- |
+| `npm run build`        | Build de production           |
+| `npm run preview`      | Prévisualiser le build        |
+| `npm run lint`         | ESLint                        |
+| `npm run format`       | Prettier (écriture)           |
 | `npm run format:check` | Prettier (vérification seule) |
-| `npm run audit:code`   | Lint + format:check            |
+| `npm run audit:code`   | Lint + format:check           |

@@ -6,7 +6,9 @@
   border-radius: var(--ds-radius-lg);
   padding: var(--ds-space-xl);
   text-align: center;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
 
 .zone:hover,

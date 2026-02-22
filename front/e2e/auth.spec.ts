@@ -13,7 +13,9 @@ test.describe('Authentification', () => {
     await expect(page.getByLabel(/Mot de passe/i)).toBeVisible()
   })
 
-  test('connexion réussie puis redirection vers Partager et affichage Déconnexion', async ({ page }) => {
+  test('connexion réussie puis redirection vers Partager et affichage Déconnexion', async ({
+    page,
+  }) => {
     await page.goto('/connection')
     await page.getByLabel(/Email/i).fill(TEST_EMAIL)
     await page.getByLabel(/Mot de passe/i).fill(TEST_PASSWORD)
@@ -27,7 +29,9 @@ test.describe('Authentification', () => {
     await expect(page.getByRole('heading', { name: 'Connexion' })).toBeVisible()
     await page.getByRole('link', { name: /Créer un compte/i }).click()
     await expect(page).toHaveURL(/\/inscription/)
-    await expect(page.getByRole('heading', { name: 'Créer un compte' })).toBeVisible({ timeout: 3000 })
+    await expect(page.getByRole('heading', { name: 'Créer un compte' })).toBeVisible({
+      timeout: 3000,
+    })
   })
 
   test('inscription avec email unique puis Déconnexion visible', async ({ page }) => {

@@ -7,7 +7,9 @@ test.describe('Page d’accueil', () => {
     await expect(page.getByRole('link', { name: /Se connecter/i })).toBeVisible()
   })
 
-  test('la page Partager affiche "Mes fichiers" et invite à se connecter quand non authentifié', async ({ page }) => {
+  test('la page Partager affiche "Mes fichiers" et invite à se connecter quand non authentifié', async ({
+    page,
+  }) => {
     await page.goto('/partager')
     await expect(page.getByRole('heading', { name: 'Mes fichiers' })).toBeVisible()
     await expect(page.getByText(/Connectez-vous pour voir et gérer vos fichiers/i)).toBeVisible()

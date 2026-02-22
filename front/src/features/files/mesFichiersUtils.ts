@@ -43,7 +43,7 @@ export function getExpirationLabel(file: FileItem): string {
   const dayAfter = new Date(now)
   dayAfter.setDate(dayAfter.getDate() + 2)
   if (d.getTime() < now.getTime()) return 'Expiré'
-  if (d.getTime() < dayEnd.getTime()) return 'Expire aujourd\'hui'
+  if (d.getTime() < dayEnd.getTime()) return "Expire aujourd'hui"
   if (d.getTime() < dayAfter.getTime()) return 'Expire demain'
   const diffDays = Math.ceil((d.getTime() - now.getTime()) / (24 * 60 * 60 * 1000))
   return diffDays === 1 ? 'Expire dans 1 jour' : `Expire dans ${diffDays} jours`
@@ -57,7 +57,7 @@ export function getExpirationInfoMessage(file: FileItem): string | null {
   const now = Date.now()
   if (d.getTime() < now) return null
   const diffDays = Math.ceil((d.getTime() - now) / (24 * 60 * 60 * 1000))
-  if (diffDays === 0) return 'Ce fichier expirera aujourd\'hui.'
+  if (diffDays === 0) return "Ce fichier expirera aujourd'hui."
   if (diffDays === 1) return 'Ce fichier expirera demain.'
   return `Ce fichier expirera dans ${diffDays} jours.`
 }

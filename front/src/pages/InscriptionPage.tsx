@@ -50,8 +50,7 @@ export function InscriptionPage() {
           <form onSubmit={handleSubmit} className={styles.form}>
             {error && <p className={styles.error}>{error}</p>}
             <label className={styles.label}>
-              Email
-              {' '}
+              Email{' '}
               <input
                 type="email"
                 value={form.email}
@@ -63,8 +62,7 @@ export function InscriptionPage() {
               />
             </label>
             <label className={styles.label}>
-              Mot de passe
-              {' '}
+              Mot de passe{' '}
               <input
                 type="password"
                 value={form.password}
@@ -76,8 +74,7 @@ export function InscriptionPage() {
               />
             </label>
             <label className={styles.label}>
-              Vérification du mot de passe
-              {' '}
+              Vérification du mot de passe{' '}
               <input
                 type="password"
                 value={passwordConfirm}
