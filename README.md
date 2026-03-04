@@ -47,6 +47,7 @@ npm run dev
 | Document | Description |
 |----------|-------------|
 | [MAINTENANCE.md](MAINTENANCE.md) | Documentation de maintenance — vérifications, mises à jour, BDD, dépannage |
+| [Fonctionnalite.md](Fonctionnalite.md) | Fonctionnalité principale et détail des fonctionnalités avec fichiers de réalisation |
 | [docs/architecture.md](docs/architecture.md) | Architecture globale, flux, données, tests |
 | [front/README.md](front/README.md) | Front React — commandes, tests unitaires, e2e |
 | [front/README-DATASHARE.md](front/README-DATASHARE.md) | Design DataShare, routes, limite 1 Go |
