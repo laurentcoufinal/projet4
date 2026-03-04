@@ -41,6 +41,14 @@ Lancer les tests en mode watch (re-exécution à chaque modification) :
 npm test
 ```
 
+**Couverture de code** (objectif 70 % sur composants, features, hooks) :
+
+```bash
+npm run test:coverage
+```
+
+Le rapport HTML est généré dans `coverage/`. Les seuils (lines, functions, branches, statements) sont configurés dans `vite.config.ts`.
+
 ---
 
 ## Tests e2e (Playwright)

@@ -58,7 +58,9 @@ npm run dev
 ## Tests
 
 - **Unitaires (front)** : `cd front && npm run test:run`
+- **Couverture (front)** : `cd front && npm run test:coverage` — objectif 70 % (composants, features, hooks). Rapport dans `front/coverage/`.
 - **Unitaires / feature (back)** : `cd back && php artisan test`
+- **Couverture (back)** : `cd back && php artisan test --coverage` — rapport HTML dans `back/coverage/` (nécessite l’extension PHP pcov ou xdebug).
 - **E2E** : `cd front && npm run test:e2e` (backend démarré)
 - **Charge (k6)** : voir [k6/README.md](k6/README.md)
 

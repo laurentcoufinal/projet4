@@ -49,6 +49,10 @@ cd back && composer audit
 cd front && npm run test:run
 cd back && php artisan test
 
+# Couverture de code (objectif 70 %)
+cd front && npm run test:coverage
+cd back && php artisan test --coverage   # rapport dans back/coverage/ (pcov ou xdebug requis)
+
 # Tests e2e (backend et front démarrés)
 cd front && npm run test:e2e
 
