@@ -21,12 +21,18 @@ Backend Laravel (API REST) pour le stockage et le partage sécurisé de fichiers
 composer install
 ```
 
-**Configuration BDD**
+**Base de données (PostgreSQL + Docker)**
 
-1. Copier le fichier d’environnement : `cp .env.example .env`
-2. Générer la clé d’application : `php artisan key:generate`
-3. Configurer la base de données dans `.env` (par défaut : `DB_CONNECTION=sqlite` ; pour MySQL/PostgreSQL, renseigner `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`)
-4. Créer les tables : `php artisan migrate`
+Prérequis : [Docker](https://docs.docker.com/get-docker/) / Docker Compose, et l’extension PHP **`pdo_pgsql`** (`php -m | grep pgsql`).
+
+1. Démarrer PostgreSQL : `docker compose up -d` (fichier [docker-compose.yml](docker-compose.yml) : base `laravel`, utilisateur `laravel`, mot de passe d’exemple `secret` — à changer en production).
+2. Copier l’environnement : `cp .env.example .env` (les variables `DB_*` sont alignées avec le conteneur).
+3. Générer la clé : `php artisan key:generate`
+4. Appliquer le schéma : `php artisan config:clear` puis `php artisan migrate`
+
+Arrêter la base : `docker compose down`. Supprimer aussi les données : `docker compose down --volumes`.
+
+Sans Docker, vous pouvez installer PostgreSQL sur la machine et renseigner `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` dans `.env` de la même façon. Pour SQLite en local uniquement, voir les lignes commentées en fin de bloc `DB_*` dans `.env.example`.
 
 **Lancer le serveur**
 
