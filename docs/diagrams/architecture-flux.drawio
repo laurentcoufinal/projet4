@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Architecture et flux" id="architecture-flux">
-        <mxGraphModel dx="988" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="988" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -43,7 +43,7 @@
                 <mxCell id="back-models" value="Modèles / Domaine&#10;User, File, FileShare, ShareLink&#10;StorageDaoInterface" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;fontSize=10;" parent="1" vertex="1">
                     <mxGeometry x="620" y="215" width="250" height="85" as="geometry"/>
                 </mxCell>
-                <mxCell id="bdd" value="Base de données&#10;(SQLite)&#10;users, files, file_share,&#10;share_links" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                <mxCell id="bdd" value="Base de données&lt;br&gt;(PostGreSQL)&lt;br&gt;users, files, file_share,&lt;br&gt;share_links" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
                     <mxGeometry x="620" y="340" width="120" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="storage" value="Stockage fichiers&#10;(disque / DAO)&#10;clé UUID" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
