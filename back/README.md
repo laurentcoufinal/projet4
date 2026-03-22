@@ -69,6 +69,32 @@ php artisan test tests/Unit/FileModelTest.php
 php artisan test --filter=AuthTest
 ```
 
+**Tests d’intégration PostgreSQL** (hors suite par défaut)
+
+Ces tests vérifient migrations, colonnes JSON (`tags`, `whereJsonContains`) et le flux register/login sur une vraie base PostgreSQL.
+
+**Recommandé si PHP sur l’hôte n’a pas `pdo_pgsql`** (souvent la cause des 3 tests *skipped*) : exécuter PHPUnit dans le conteneur **`php_pgsql`** (image avec `pdo_pgsql`, `DB_HOST=postgres`). Au premier usage, construire l’image : `docker compose build php_pgsql`.
+
+```bash
+docker compose up -d postgres
+php artisan test:pgsql --docker
+# ou
+composer test:pgsql:docker
+```
+
+**Sur l’hôte** (extension `pdo_pgsql` installée, PostgreSQL sur `127.0.0.1:5432`) : la base **`laravel_testing`** est créée au premier init Docker (`docker/postgres/init/`) ; sinon les tests tentent de la créer automatiquement depuis la base `laravel`, ou vous pouvez :  
+`docker compose exec postgres psql -U laravel -d laravel -c "CREATE DATABASE laravel_testing OWNER laravel;"`
+
+```bash
+php artisan test:pgsql
+# ou
+composer test:pgsql
+# ou
+./vendor/bin/phpunit -c phpunit.pgsql.xml
+```
+
+Ne pas utiliser `php artisan test --configuration=phpunit.pgsql.xml` : Laravel ajoute déjà `--configuration=phpunit.xml`, ce qui provoque l’erreur *« Option --configuration cannot be used more than once »*.
+
 ---
 
 ## About Laravel

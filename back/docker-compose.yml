@@ -11,11 +11,30 @@ services:
       POSTGRES_PASSWORD: secret
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U laravel -d laravel']
       interval: 5s
       timeout: 5s
       retries: 5
+
+  php_pgsql:
+    build:
+      context: .
+      dockerfile: docker/php-pgsql-cli/Dockerfile
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: '5432'
+      DB_DATABASE: laravel_testing
+      DB_USERNAME: laravel
+      DB_PASSWORD: secret
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:
