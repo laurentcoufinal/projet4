@@ -36,11 +36,15 @@ Sans Docker, vous pouvez installer PostgreSQL sur la machine et renseigner `DB_H
 
 **Lancer le serveur**
 
+Après **`php artisan migrate`** (nécessaire notamment pour la table `sessions` si `SESSION_DRIVER=database` dans `.env`).
+
 ```bash
 php artisan serve
 ```
 
-L’API est disponible sur `http://localhost:8000`. Les routes sont préfixées par `/api/v1`.
+L’API est disponible sur `http://localhost:8000` ou `http://127.0.0.1:8000`. Les routes sont préfixées par `/api/v1`.
+
+Si la page affiche une erreur 500 ou « inaccessible » alors que le terminal indique *Server running* : vérifier les migrations (`php artisan migrate`) et les logs (`storage/logs/laravel.log`). Sous **WSL2**, si le navigateur Windows n’atteint pas le serveur, essayez `php artisan serve --host=0.0.0.0 --port=8000` pour écouter sur toutes les interfaces.
 
 ### Lancer les tests
 

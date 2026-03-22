@@ -12,7 +12,7 @@ Accept: application/json
 ### 2. Envoi d'un fichier par Jean Dupont
 # Utiliser le token du login (sans guillemets). REST Client : Authorization: Bearer {{login.response.body.token}}
 POST http://localhost:8000/api/v1/files
-Authorization: Bearer 3|BY9Cm01Gy10puC9nnbpYrsupHdReGN8ZoH1QhVZW96cad442
+Authorization: Bearer 826|OXdSRCxYXkG1hXzLR9iCXOVhVh4Gy4JUkyCO5BqUeedb9756
 Accept: application/json
 Content-Type: multipart/form-data; boundary=----FormBoundary
 
