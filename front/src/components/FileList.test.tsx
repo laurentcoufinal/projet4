@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterAll } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { FileList } from './FileList'
 import type { FileItem } from '@/types'
@@ -23,6 +23,12 @@ vi.mock('@/features/files/ShareModal', () => ({
 }))
 
 describe('FileList', () => {
+  // #region agent log
+  try {
+    fetch('http://127.0.0.1:7410/ingest/8a46d33e-9edb-46e2-8c27-e2e872cf5245', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '2364c1' }, body: JSON.stringify({ sessionId: '2364c1', location: 'FileList.test.tsx:describe', message: 'file started', data: { file: 'FileList.test.tsx', time: Date.now() }, timestamp: Date.now(), hypothesisId: 'H2', runId: 'run1' }) }).catch(() => {})
+  } catch (_) {}
+  afterAll(() => { try { fetch('http://127.0.0.1:7410/ingest/8a46d33e-9edb-46e2-8c27-e2e872cf5245', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '2364c1' }, body: JSON.stringify({ sessionId: '2364c1', location: 'FileList.test.tsx:afterAll', message: 'file finished', data: { file: 'FileList.test.tsx', time: Date.now() }, timestamp: Date.now(), hypothesisId: 'H2', runId: 'run1' }) }).catch(() => {}) } catch (_) {} })
+  // #endregion
   beforeEach(() => {
     vi.clearAllMocks()
   })

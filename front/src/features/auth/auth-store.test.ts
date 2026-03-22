@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, afterAll } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { useAuthStore, useIsAuthenticated } from './auth-store'
 import type { User } from '@/types'
@@ -10,6 +10,12 @@ const mockUser: User = {
 }
 
 describe('auth-store', () => {
+  // #region agent log
+  try {
+    fetch('http://127.0.0.1:7410/ingest/8a46d33e-9edb-46e2-8c27-e2e872cf5245', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '2364c1' }, body: JSON.stringify({ sessionId: '2364c1', location: 'auth-store.test.ts:describe', message: 'file started', data: { file: 'auth-store.test.ts', time: Date.now() }, timestamp: Date.now(), hypothesisId: 'H2', runId: 'run1' }) }).catch(() => {})
+  } catch (_) {}
+  afterAll(() => { try { fetch('http://127.0.0.1:7410/ingest/8a46d33e-9edb-46e2-8c27-e2e872cf5245', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '2364c1' }, body: JSON.stringify({ sessionId: '2364c1', location: 'auth-store.test.ts:afterAll', message: 'file finished', data: { file: 'auth-store.test.ts', time: Date.now() }, timestamp: Date.now(), hypothesisId: 'H2', runId: 'run1' }) }).catch(() => {}) } catch (_) {} })
+  // #endregion
   beforeEach(() => {
     useAuthStore.getState().logout()
   })

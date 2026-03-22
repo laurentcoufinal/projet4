@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterAll } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { RegisterModal } from './RegisterModal'
@@ -8,6 +8,12 @@ import * as authApi from '@/api/auth'
 vi.mock('@/api/auth')
 
 describe('RegisterModal', () => {
+  // #region agent log
+  try {
+    fetch('http://127.0.0.1:7410/ingest/8a46d33e-9edb-46e2-8c27-e2e872cf5245', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '2364c1' }, body: JSON.stringify({ sessionId: '2364c1', location: 'RegisterModal.test.tsx:describe', message: 'file started', data: { file: 'RegisterModal.test.tsx', time: Date.now() }, timestamp: Date.now(), hypothesisId: 'H2', runId: 'run1' }) }).catch(() => {})
+  } catch (_) {}
+  afterAll(() => { try { fetch('http://127.0.0.1:7410/ingest/8a46d33e-9edb-46e2-8c27-e2e872cf5245', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '2364c1' }, body: JSON.stringify({ sessionId: '2364c1', location: 'RegisterModal.test.tsx:afterAll', message: 'file finished', data: { file: 'RegisterModal.test.tsx', time: Date.now() }, timestamp: Date.now(), hypothesisId: 'H2', runId: 'run1' }) }).catch(() => {}) } catch (_) {} })
+  // #endregion
   const onClose = vi.fn()
   const onSwitchToLogin = vi.fn()
 

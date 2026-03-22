@@ -33,6 +33,23 @@ export function InscriptionPage() {
         password_confirmation: passwordConfirm,
       })
       setAuth(data.token, data.user)
+      // #region agent log
+      fetch('http://127.0.0.1:7248/ingest/cb806554-8ec7-4c00-9fa8-3db4a83cc406', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Debug-Session-Id': 'a4ccaf',
+        },
+        body: JSON.stringify({
+          sessionId: 'a4ccaf',
+          location: 'InscriptionPage.tsx:handleSubmit',
+          message: 'register ok, navigate home',
+          data: { hasToken: !!data?.token },
+          timestamp: Date.now(),
+          hypothesisId: 'H4',
+        }),
+      }).catch(() => {})
+      // #endregion
       navigate('/', { replace: true })
     } catch (err: unknown) {
       setError(getApiErrorMessage(err, "Erreur lors de l'inscription"))

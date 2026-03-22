@@ -80,6 +80,9 @@ describe('DropZone', () => {
       headers: {},
       config: {},
     })
+    await waitFor(() => {
+      expect(screen.queryByText('Envoi en cours…')).not.toBeInTheDocument()
+    })
   })
 
   it('affiche "Erreur lors de l’envoi." en cas d’échec de l’API', async () => {

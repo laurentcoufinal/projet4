@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { filesApi } from '@/api/files'
 import { filesQueryKey } from '@/hooks/useFiles'
@@ -34,9 +34,13 @@ export function ShareLinkModal({
     },
   })
 
+  const mutateRef = useRef(shareLinkMutation.mutate)
+  mutateRef.current = shareLinkMutation.mutate
+
   useEffect(() => {
-    shareLinkMutation.mutate(expiresInDays)
-  }, [file.id, expiresInDays, shareLinkMutation])
+    setShareUrl('')
+    mutateRef.current(expiresInDays)
+  }, [file.id, expiresInDays])
 
   const handleCreateLink = () => {
     shareLinkMutation.mutate(expiresInDays)

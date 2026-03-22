@@ -1,0 +1,19 @@
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/connection","search":""},"timestamp":1774183988318,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"ConnectionPage.tsx:handleSubmit","message":"login ok, calling navigate partager","data":{"hasToken":true,"hasUser":true},"timestamp":1774184006079,"hypothesisId":"H1"}
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/partager","search":""},"timestamp":1774184006085,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":true},"timestamp":1774184006087,"hypothesisId":"H3"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":true},"timestamp":1774184006086,"hypothesisId":"H3"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":false},"timestamp":1774184019957,"hypothesisId":"H3"}
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/","search":""},"timestamp":1774184019961,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/connection","search":""},"timestamp":1774184021664,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"ConnectionPage.tsx:handleSubmit","message":"login ok, calling navigate partager","data":{"hasToken":true,"hasUser":true},"timestamp":1774184061701,"hypothesisId":"H1"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":true},"timestamp":1774184061707,"hypothesisId":"H3"}
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/partager","search":""},"timestamp":1774184061706,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":true},"timestamp":1774184061708,"hypothesisId":"H3"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":false},"timestamp":1774184100803,"hypothesisId":"H3"}
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/","search":""},"timestamp":1774184100805,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/connection","search":""},"timestamp":1774184102344,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"ConnectionPage.tsx:handleSubmit","message":"login ok, calling navigate partager","data":{"hasToken":true,"hasUser":true},"timestamp":1774184117947,"hypothesisId":"H1"}
+{"sessionId":"a4ccaf","location":"App.tsx:RouteDebugLogger","message":"route changed","data":{"pathname":"/partager","search":""},"timestamp":1774184117951,"hypothesisId":"H2"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":true},"timestamp":1774184117952,"hypothesisId":"H3"}
+{"sessionId":"a4ccaf","location":"PartagerPage.tsx:mount","message":"PartagerPage mounted","data":{"isAuthenticated":true},"timestamp":1774184117952,"hypothesisId":"H3"}

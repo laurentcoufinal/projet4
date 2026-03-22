@@ -23,6 +23,23 @@ export function ConnectionPage() {
     try {
       const { data } = await authApi.login(form)
       setAuth(data.token, data.user)
+      // #region agent log
+      fetch('http://127.0.0.1:7248/ingest/cb806554-8ec7-4c00-9fa8-3db4a83cc406', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Debug-Session-Id': 'a4ccaf',
+        },
+        body: JSON.stringify({
+          sessionId: 'a4ccaf',
+          location: 'ConnectionPage.tsx:handleSubmit',
+          message: 'login ok, calling navigate partager',
+          data: { hasToken: !!data?.token, hasUser: !!data?.user },
+          timestamp: Date.now(),
+          hypothesisId: 'H1',
+        }),
+      }).catch(() => {})
+      // #endregion
       navigate('/partager', { replace: true })
     } catch (err: unknown) {
       setError(getApiErrorMessage(err, 'Erreur de connexion'))
