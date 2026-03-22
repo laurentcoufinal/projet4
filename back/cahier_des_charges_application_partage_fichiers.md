@@ -1,4 +1,4 @@
-g
+# Cahier des charges — application de partage de fichiers
 
 ## 1. Objet et périmètre du projet
 
@@ -29,7 +29,7 @@ L’objectif est de valider le modèle métier et l’architecture (DAO, droits,
 ### Solution retenue
 
 - **Système de fichiers local** : les fichiers sont écrits sur le disque du serveur dans un répertoire dédié (ex. `storage/app/uploads` ou équivalent Laravel).
-- Les **métadonnées** (nom, taille, type MIME, propriétaire, droits) restent en **base de données** (MySQL ou PostgreSQL).
+- Les **métadonnées** (nom, taille, type MIME, propriétaire, droits) restent en **base de données** (**PostgreSQL** pour l’implémentation actuelle ; d’autres SGBD pris en charge par Laravel restent possibles).
 
 ### Justification
 
@@ -65,7 +65,7 @@ Référence : document projet `type_stockage_application_web_stockage_fichiers` 
 
 ## 4. Modèle de données / métadonnées (phase 1)
 
-- Les **métadonnées** (nom fichier, taille, type MIME, propriétaire, date de création, droits, tags) sont stockées en **base de données** (MySQL/PostgreSQL avec Laravel).
+- Les **métadonnées** (nom fichier, taille, type MIME, propriétaire, date de création, droits, tags) sont stockées en **base de données** (**PostgreSQL** avec Laravel pour le projet ; SQLite en mémoire pour les tests PHPUnit par défaut).
 - Les **fichiers** (contenu binaire) sont stockés sur le **disque local** via la DAO sous un **nom anonyme** (clé unique, ex. UUID). Seule la BDD fait le lien entre le fichier métier (nom, utilisateur, partage) et le stockage physique.
 
 ### Nom en BDD vs stockage anonyme

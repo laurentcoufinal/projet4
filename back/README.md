@@ -11,6 +11,8 @@
 
 Backend Laravel (API REST) pour le stockage et le partage sécurisé de fichiers. Voir le [cahier des charges](cahier_des_charges_application_partage_fichiers.md).
 
+**Base de données** : le projet est configuré par défaut pour **PostgreSQL** (`DB_CONNECTION=pgsql`, Docker dans [docker-compose.yml](docker-compose.yml)). Les tests PHPUnit utilisent **SQLite en mémoire** sauf la suite optionnelle `phpunit.pgsql.xml` / `test:pgsql`.
+
 - **Taille max par fichier** : 1 Go (configurable via `FileController::MAX_FILE_SIZE_MB`). En production, vérifier aussi `upload_max_filesize` et `post_max_size` (PHP) et `client_max_body_size` (nginx si utilisé).
 
 ### Scripts de déploiement : installation, configuration BDD

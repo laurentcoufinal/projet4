@@ -37,7 +37,7 @@ Voici les principales options, avec avantages, inconvénients, extensibilité et
 
 ---
 
-## 3. **Base de données (BLOB dans PostgreSQL, MySQL, etc.)**
+## 3. **Base de données (BLOB ; ex. PostgreSQL BYTEA, MySQL LONGBLOB, etc.)**
 
 **Fonctionnement** : Contenu binaire stocké dans des colonnes BLOB / BYTEA / type binaire.
 
