@@ -7,7 +7,7 @@ Ce document décrit les tâches et procédures de maintenance pour l’applicati
 ## 1. Vue d’ensemble
 
 - **Frontend** : [front/](front/) — React 18, Vite, TypeScript.
-- **Backend** : [back/](back/) — Laravel, API REST, Sanctum, SQLite par défaut.
+- **Backend** : [back/](back/) — Laravel, API REST, Sanctum, **PostgreSQL** par défaut (voir [back/README.md](back/README.md), [back/docker-compose.yml](back/docker-compose.yml)) ; SQLite en mémoire pour les tests PHPUnit.
 - **Documentation** : [README.md](README.md), [docs/architecture.md](docs/architecture.md), [front/architecture.md](front/architecture.md).
 
 ---
@@ -104,8 +104,8 @@ php artisan migrate:rollback  # annuler la dernière migration (si besoin)
 
 ### 4.2 Sauvegardes (production)
 
-- **SQLite** : copier le fichier de base (ex. `back/database/database.sqlite`) de façon régulière.
-- **MySQL/PostgreSQL** : utiliser les outils habituels (`mysqldump`, `pg_dump`) selon la configuration `DB_*` dans `.env`.
+- **PostgreSQL** (configuration de référence du projet) : `pg_dump` (ou outils équivalents) en s’appuyant sur `DB_*` dans `.env` (hôte, port, base, utilisateur).
+- **SQLite** : copier le fichier de base (ex. `back/database/database.sqlite`) si vous utilisez ce mode pour le dev ou des tests hors Docker.
 - **Fichiers uploadés** : le stockage binaire est configuré via `FILESYSTEM_DISK` et `StorageDaoInterface` ; sauvegarder le disque ou le bucket selon l’environnement.
 
 ---
@@ -115,7 +115,7 @@ php artisan migrate:rollback  # annuler la dernière migration (si besoin)
 ### 5.1 Backend (`back/.env`)
 
 - `APP_KEY` : obligatoire (générer avec `php artisan key:generate`).
-- `DB_*` : connexion BDD (par défaut SQLite).
+- `DB_*` : connexion BDD (référence PostgreSQL, voir `back/.env.example` ; SQLite possible pour dev/tests).
 - `FILESYSTEM_DISK` : stockage des fichiers (local, s3, etc.).
 - En production : `APP_DEBUG=false`, `APP_ENV=production`.
 

@@ -4,7 +4,7 @@
 
 - **Objectif** : Application de partage de fichiers sécurisé : upload, liste, téléchargement, partage par utilisateur (email/user_id) et par lien temporaire (token).
 - **Type** : Application web (frontend SPA + API REST).
-- **Stack principale** : Frontend — React 18, Vite, TypeScript, React Query, Zustand, Axios. Backend — Laravel 12, PHP 8.2, Laravel Sanctum. Données — SQLite (défaut), stockage fichiers (disque local via `StorageDaoInterface`).
+- **Stack principale** : Frontend — React 18, Vite, TypeScript, React Query, Zustand, Axios. Backend — Laravel 12, PHP 8.2, Laravel Sanctum. Données — PostgreSQL (référence projet, `DB_CONNECTION=pgsql`, voir `back/docker-compose.yml`) ; SQLite en mémoire pour les tests PHPUnit par défaut ; stockage fichiers (disque local via `StorageDaoInterface`).
 - **contrainte de conception**: stockage deriere une DAO pour facilte la montée en charge si besoin.
 
 ---
@@ -84,7 +84,7 @@ Cette section décrit l'usage de DataShare par un **utilisateur final** : les pa
   - **file_share** : file_id (FK files), user_id (FK users), permission (ex. read).
   - **share_links** : file_id (FK files), token, expires_at.
   - **personal_access_tokens** (Sanctum) : gestion des tokens d'API.
-- **Technologies** : SQLite par défaut (DB_CONNECTION=sqlite) ; stockage binaire via disque local (FILESYSTEM_DISK=local), clé = UUID (pas de nom de fichier dans le chemin).
+- **Technologies** : PostgreSQL en référence (`DB_CONNECTION=pgsql`, voir `back/.env.example`) ; SQLite en mémoire pour la suite PHPUnit par défaut ; stockage binaire via disque local (FILESYSTEM_DISK=local), clé = UUID (pas de nom de fichier dans le chemin).
 - **Migrations** : [back/database/migrations/](/back/database/migrations) — versioning du schéma ; pas de stratégie de migration documentée autre que `php artisan migrate`.
 
 ## 6. Domain-Driven Design
@@ -238,7 +238,7 @@ Voici les principales options, avec avantages, inconvénients, extensibilité et
 
 ---
 
-## 3. **Base de données (BLOB dans PostgreSQL, MySQL, etc.)**
+## 3. **Base de données (BLOB ; ex. PostgreSQL BYTEA, autres SGBD avec types binaires)**
 
 **Fonctionnement** : Contenu binaire stocké dans des colonnes BLOB / BYTEA / type binaire.
 

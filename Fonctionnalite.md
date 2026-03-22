@@ -8,7 +8,7 @@ Document décrivant l’architecture fonctionnelle de l’application, la foncti
 
 - **Type** : Application web (SPA React + API REST Laravel).
 - **Objectif métier** : Partager des fichiers de manière sécurisée (upload, liste, téléchargement, partage entre utilisateurs et par lien temporaire).
-- **Stack** : Frontend — React 18, Vite, TypeScript, React Query, Zustand, Axios. Backend — Laravel, Sanctum. Données — SQLite, stockage binaire (DAO).
+- **Stack** : Frontend — React 18, Vite, TypeScript, React Query, Zustand, Axios. Backend — Laravel, Sanctum. Données — PostgreSQL (référence projet, Docker) ; SQLite en mémoire pour les tests PHPUnit par défaut ; stockage binaire (DAO).
 - **Référence** : [docs/architecture.md](docs/architecture.md).
 
 ---
